@@ -83,7 +83,9 @@ au FocusLost * :wa
 set autowriteall
 
 " highlights lines over 80 columns
-au BufWinEnter * let w:m1=matchadd('Search', '\%>79v.\+', -1)
+highlight LineOverWidth guibg=#424242 ctermbg=gray
+au ColorScheme * highlight LineOverWidth guibg=#424242
+au BufWinEnter * let w:m1=matchadd('LineOverWidth', '\%>79v.\+', -1)
 
 " highlists trailing whitespaces
 highlight ExtraWhitespace ctermbg=gray guibg=#592929
