@@ -1,0 +1,21 @@
+" Example Vim graphical configuration.
+" Copy to ~/.gvimrc or ~/_gvimrc.
+
+"set guifont=Monaco:h12           " Font family and font size.
+if has("gui_gtk2")
+    set guifont=Monaco\ 11
+elseif has("gui_macvim")
+    set guifont=Monaco:h12
+end
+
+set antialias                     " MacVim: smooth fonts.
+set encoding=utf-8                " Use UTF-8 everywhere.
+set guioptions-=T                 " Hide toolbar.
+" set background=light              " Background.
+set lines=35 columns=100          " Window dimensions.
+
+" Uncomment to use.
+set guioptions-=r                 " Don't show right scrollbar
+
+colorscheme vividchalk
+

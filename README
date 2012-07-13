@@ -1,0 +1,7 @@
+To install, just run:
+
+cd ~
+ln -s ~/path/to/dotfiles/dotvim/ .vim
+ln -s ~/vim/vimrc ~/.vimrc
+ln -s ~/vim/gvimrc ~/.gvimrc
+
