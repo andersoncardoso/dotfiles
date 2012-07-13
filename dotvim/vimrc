@@ -42,6 +42,10 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set autoindent
+set smarttab
+
+set hlsearch      " highlight search terms
+set incsearch     " show search matches as you type
 
 set laststatus=2                  " Show the status line all the time
 " Useful status information at bottom of screen
