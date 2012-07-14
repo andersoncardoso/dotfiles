@@ -95,5 +95,9 @@ au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
 
 " command t should actually use command+t (or ctrl+t)
-nnoremap <C-t> :CommandT<CR>
+" nnoremap <C-t> :CommandT<CR>
+
+" ignore dumb system and auto generated stuff
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc  " MacOSX/Linux
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
