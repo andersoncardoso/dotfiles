@@ -105,3 +105,7 @@ au InsertLeave * match ExtraWhiteSpace /\s\+$/
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc  " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
+" paste and copy from clipboard with <leader>+p and <leader>+y
+map <leader>p "+gP
+vmap <leader>y "+y
+
