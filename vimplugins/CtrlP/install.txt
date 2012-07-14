@@ -1,0 +1,6 @@
+uncompress the tarball, and merge the folders in .vim/
+or:
+  untar to .vim/bundle/ctrlp.vim/
+  set runtimepath^=~/.vim/bundle/ctrlp.vim
+  :helptags ~/.vim/bundle/ctrlp.vim/doc
+
