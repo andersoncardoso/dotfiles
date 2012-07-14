@@ -20,6 +20,15 @@ Some dotfiles I use:
 
 ##Dotvim Usage:
 
+**Plugins:**
+
+- pathogen
+- ack
+- ctrlP
+- ragtag
+- surround
+
+
 ####Mappings:
 
 ```
@@ -48,4 +57,12 @@ Some dotfiles I use:
 - [i] <C-x>@           => link tag (css)
 - [i] <C-x>$           => script tag (js)
 ```
+
+####Surround:
+
+```
+- [v] [select]S[surround]
+ex: hello world!  -> v2wS"  -> "hello world!"
+```
+
 
