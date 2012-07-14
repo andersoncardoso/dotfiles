@@ -100,9 +100,6 @@ au BufEnter * match ExtraWhitespace /\s\+$/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
 
-" command t should actually use command+t (or ctrl+t)
-" nnoremap <C-t> :CommandT<CR>
-
 " ignore dumb system and auto generated stuff
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc  " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
@@ -115,4 +112,11 @@ vmap <leader>y "+y
 imap <C-space> <C-p>
 highlight Pmenu ctermbg=DarkGray guibg=#646464
 highlight PmenuSel ctermbg=DarkRed guibg=#592929
+
+" ragtag mappings
+let g:ragtag_global_maps = 1
+
+" convenient mapping for insert mode
+inoremap <C-o> <ESC>o
+
 
