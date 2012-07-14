@@ -10,6 +10,8 @@ Some dotfiles I use:
 ```
     cd ~
     cp -r /path/to/dotfiles/dotvim/ .vim
+    ln -s ~/.vim/vimrc ~/.vimrc
+    ln -s ~/.vim/gvimrc ~/.gvimrc
 ```
   done, pathogen takes care of the plugins
 
