@@ -44,8 +44,12 @@ set shiftwidth=4
 set autoindent
 set smarttab
 
-set hlsearch      " highlight search terms
-set incsearch     " show search matches as you type
+" toggle search highlight
+nnoremap <F3> :set hls!<CR>
+
+" ident/unindent with tabs on visual mode
+vmap <Tab> >gv
+vmap <S-Tab> <gv
 
 set laststatus=2                  " Show the status line all the time
 " Useful status information at bottom of screen
