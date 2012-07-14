@@ -109,3 +109,7 @@ let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 map <leader>p "+gP
 vmap <leader>y "+y
 
+" map ctrl+space to autocompletion
+imap <C-space> <C-p>
+
+
