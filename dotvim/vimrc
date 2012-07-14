@@ -111,5 +111,6 @@ vmap <leader>y "+y
 
 " map ctrl+space to autocompletion
 imap <C-space> <C-p>
-
+highlight Pmenu ctermbg=DarkGray guibg=#646464
+highlight PmenuSel ctermbg=DarkRed guibg=#592929
 

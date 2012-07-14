@@ -19,3 +19,6 @@ set guioptions-=r                 " Don't show right scrollbar
 " colorscheme vividchalk
 colorscheme desert
 
+highlight Pmenu guibg=#646464
+highlight PmenuSel guibg=#592929
+
