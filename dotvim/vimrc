@@ -94,3 +94,6 @@ au BufEnter * match ExtraWhitespace /\s\+$/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
 
+" command t should actually use command+t (or ctrl+t)
+nnoremap <C-t> :CommandT<CR>
+
