@@ -31,18 +31,21 @@ Some dotfiles I use:
 - snipmate-snippets
 - fugitive
 - sparkup
+- tComment
+
 
 ####Mappings:
 
 ```
-- [n] <F3>       => toggle serach highlighting
-- [v] <Tab>      => indent block
-- [v] <S-Tab>    => unindent block
-- [n] <leader>p  => paste from OS clipboard
-- [v] <leader>y  => yank to OS clipboard
-- [i] <C-space>  => autocomplete
-- [n] <C-o>      => open a new line bellow, but don't change mode (keep in normal)
-- [i] ( { [ " '  => they all auto closes.
+- [n] <F3>           => toggle serach highlighting
+- [v] <Tab>          => indent block
+- [v] <S-Tab>        => unindent block
+- [n] <leader>p      => paste from OS clipboard
+- [v] <leader>y      => yank to OS clipboard
+- [i] <C-space>      => autocomplete
+- [n] <C-o>          => open a new line bellow, but don't change mode (keep in normal)
+- [i] ( { [ " '      => they all auto closes.
+- [n|i|v] <leader>c  => toggle comment (tComment)
 ```
 
 ####Usefull:

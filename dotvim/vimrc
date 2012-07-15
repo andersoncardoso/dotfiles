@@ -113,6 +113,10 @@ imap <C-space> <C-p>
 highlight Pmenu ctermbg=DarkGray guibg=#646464
 highlight PmenuSel ctermbg=DarkRed guibg=#592929
 
+" tcomment plugin remap
+map <leader>c :TComment<CR>
+imap <leader>c <ESC>:TComment<CR>i
+
 " ragtag mappings
 let g:ragtag_global_maps = 1
 
