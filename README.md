@@ -27,7 +27,10 @@ Some dotfiles I use:
 - ctrlP
 - ragtag
 - surround
-
+- snipMate
+- snipmate-snippets
+- fugitive
+- sparkup
 
 ####Mappings:
 
@@ -47,6 +50,7 @@ Some dotfiles I use:
 ```
 - :Ack _search_term_  => search _search_term_  through code base
 - <C-p>               => trigger ctrlP plugin (files fuzzy finder)
+- :Git                => runs git commands inside vim
 ```
 
 ####RagTag:
@@ -64,6 +68,25 @@ Some dotfiles I use:
 ```
 - [v] [select]S[surround]
 ex: hello world!  -> v2wS"  -> "hello world!"
+- [i] <C-o>v[select]S[surround]   => <C-o>v on i mode enter in visual i mode.
+- [n] csw'            => he*llo -> 'he*llo'
+- [n] cst<pre>        => <span>hello</span> -> <pre>hello</pre>
+- [n] dst             => <pre>hello</pre> -> hello
+```
+
+####Sparkup:
+
+```
+- [i] [sequence]<C-e> => trigger the expansion
+ex:
+  div#header > span.title + img.logo < +div#content <C-e>
+  expands to:
+
+  <div id="header">
+      <span class="title"></span>
+      <img src="" alt="" class="logo" />
+  </div>
+  <div id="content"></div>
 ```
 
 
