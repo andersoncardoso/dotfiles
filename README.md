@@ -38,7 +38,6 @@ Some dotfiles I use:
 - [n] <leader>p  => paste from OS clipboard
 - [v] <leader>y  => yank to OS clipboard
 - [i] <C-space>  => autocomplete
-- [i] <C-o>      => on insert mode open a new line bellow and send the carret there
 - [n] <C-o>      => open a new line bellow, but don't change mode (keep in normal)
 - [i] ( { [ " '  => they all auto closes.
 ```
