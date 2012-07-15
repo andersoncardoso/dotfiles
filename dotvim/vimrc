@@ -89,7 +89,7 @@ au FocusLost * :wa
 set autowriteall
 
 " highlights lines over 80 columns
-highlight LineOverWidth guibg=#424242 ctermbg=gray
+highlight LineOverWidth guibg=#424242 ctermbg=DarkGray
 au ColorScheme * highlight LineOverWidth guibg=#424242
 au BufWinEnter * let w:m1=matchadd('LineOverWidth', '\%>79v.\+', -1)
 
@@ -118,5 +118,25 @@ let g:ragtag_global_maps = 1
 
 " convenient mapping for insert mode
 inoremap <C-o> <ESC>o
+nnoremap <C-o> o<ESC>
 
+inoremap { {}<Left>
+inoremap {<CR> {<CR>}<Esc>O
+inoremap {} {}
+
+inoremap ( ()<Left>
+inoremap (<CR> (<CR>)<Esc>O
+inoremap () ()
+
+inoremap [ []<Left>
+inoremap [<CR> [<CR>]<Esc>O
+inoremap [] []
+
+inoremap " ""<Left>
+inoremap "<CR> "<CR>"<Esc>O
+inoremap "" ""
+
+inoremap ' ''<Left>
+inoremap '<CR> '<CR>'<Esc>O
+inoremap '' ''
 
