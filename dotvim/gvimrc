@@ -15,7 +15,7 @@ set go-=R
 set go-=l
 set go-=L
 set go-=m                         " Hide menu bar
-" set background=light            " Background.
+set background=dark               " Background.
 set lines=35 columns=100          " Window dimensions.
 
 " colorscheme vividchalk
