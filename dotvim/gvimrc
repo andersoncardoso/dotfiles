@@ -19,7 +19,8 @@ set background=dark               " Background.
 set lines=35 columns=100          " Window dimensions.
 
 " colorscheme vividchalk
-colorscheme desert
+" colorscheme desert
+colorscheme mustang
 highlight Pmenu guibg=#646464
 highlight PmenuSel guibg=#592929
 

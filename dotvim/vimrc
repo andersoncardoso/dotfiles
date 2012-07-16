@@ -49,6 +49,9 @@ set smarttab
 " toggle search highlight
 nnoremap <F3> :set hls!<CR>
 
+" highlight current line
+" set cursorline
+
 " ident/unindent with tabs on visual mode
 vmap <Tab> >gv
 vmap <S-Tab> <gv
@@ -57,8 +60,6 @@ set laststatus=2                  " Show the status line all the time
 " Useful status information at bottom of screen
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{fugitive#statusline()}\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
-" Or use vividchalk
-colorscheme desert
 " colorscheme vividchalk
 
 " Tab mappings.
