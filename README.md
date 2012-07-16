@@ -45,17 +45,17 @@ Some dotfiles I use:
 - [i] <C-space>      => autocomplete
 - [n] <C-o>          => open a new line bellow, but don't change mode (keep in normal)
 - [i] ( { [ " '      => they all auto closes.
-- [n|i|v] <leader>c  => toggle comment (tComment)
 - [n] <Alt>arrows    => move to pane (corresponding to the arrow direction)
-- [n|i] <leader>s    => SyntasticCheck
 ```
 
 ####Usefull:
 
 ```
 - :Ack _search_term_  => search _search_term_  through code base
-- <C-p>               => trigger ctrlP plugin (files fuzzy finder)
+- [n] <C-p>           => trigger ctrlP plugin (files fuzzy finder)
 - :Git                => runs git commands inside vim
+- [n|i] <leader>s     => SyntasticCheck
+- [n|i|v] <leader>c   => tComment
 ```
 
 
