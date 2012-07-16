@@ -58,7 +58,7 @@ set laststatus=2                  " Show the status line all the time
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{fugitive#statusline()}\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
 " Or use vividchalk
-" colorscheme desert
+colorscheme desert
 " colorscheme vividchalk
 
 " Tab mappings.
@@ -100,7 +100,7 @@ au BufEnter * match ExtraWhitespace /\s\+$/
 au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 au InsertLeave * match ExtraWhiteSpace /\s\+$/
 
-" ignore dumb system and auto generated stuff
+" ignore system and auto generated stuff
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc  " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
@@ -117,29 +117,26 @@ highlight PmenuSel ctermbg=DarkRed guibg=#592929
 map <leader>c :TComment<CR>
 imap <leader>c <ESC>:TComment<CR>i
 
-" ragtag mappings
-let g:ragtag_global_maps = 1
-
 " convenient mapping for insert mode
 nnoremap <C-o> o<ESC>
 
-inoremap { {}<Left>
-inoremap {<CR> {<CR>}<Esc>O
-inoremap {} {}
-
-inoremap ( ()<Left>
-inoremap (<CR> (<CR>)<Esc>O
-inoremap () ()
-
-inoremap [ []<Left>
-inoremap [<CR> [<CR>]<Esc>O
-inoremap [] []
-
 inoremap " ""<Left>
-inoremap "<CR> "<CR>"<Esc>O
 inoremap "" ""
 
 inoremap ' ''<Left>
-inoremap '<CR> '<CR>'<Esc>O
 inoremap '' ''
+
+" syntastic configurations
+let g:syntastic_mode_map = { 'mode': 'active',
+            \ 'active_filetypes': ['ruby', 'python', 'javascript', 'coffee', 'json', 'css'],
+            \ 'passive_filetypes': ['html'] }
+" set statusline+=%{SyntasticStatuslineFlag()}
+let g:syntastic_check_on_open=1
+let g:syntastic_python_checker = 'flake8'
+let g:syntastic_python_checker_args = "--ignore=W391"
+let g:syntastic_javascript_checker = 'jslint'
+
+nmap <leader>s :SyntasticCheck<CR>
+imap <leader>s <ESC>:SyntasticCheck<CR>i
+
 
