@@ -2,7 +2,7 @@
 
 "set guifont=Monaco:h12           " Font family and font size.
 if has("gui_gtk2")
-    set guifont=Monaco\ 11
+    set guifont=Monaco\ 12
 elseif has("gui_macvim")
     set guifont=Monaco:h12
 end
