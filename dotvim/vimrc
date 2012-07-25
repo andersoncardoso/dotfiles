@@ -141,4 +141,6 @@ let g:syntastic_javascript_checker = 'jslint'
 nmap <leader>s :SyntasticCheck<CR>
 imap <leader>s <ESC>:SyntasticCheck<CR>i
 
+" coffe maker
+" au BufWritePost *.coffee silent CoffeeMake!
 
