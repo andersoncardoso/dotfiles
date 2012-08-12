@@ -5,9 +5,9 @@ set nocompatible                  " Must come first because it changes other opt
 call pathogen#infect()
 
 syntax enable                     " Turn on syntax highlighting.
-filetype plugin indent on         " Turn on file type detection.
+filetype plugin on         " Turn on file type detection.
+filetype indent on
 
-" runtime macros/matchit.vim        " Load the matchit plugin.
 
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
@@ -64,27 +64,24 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{fugitive#statusline()}\ %{exists('*Cap
 " colorscheme vividchalk
 
 " Tab mappings.
-map <leader>tt :tabnew<cr>
-map <leader>te :tabedit
-map <leader>tc :tabclose<cr>
-map <leader>to :tabonly<cr>
-map <leader>tn :tabnext<cr>
-map <leader>tp :tabprevious<cr>
-map <leader>tf :tabfirst<cr>
-map <leader>tl :tablast<cr>
-map <leader>tm :tabmove
-
-" Uncomment to use Jamis Buck's file opening plugin
-"map <Leader>t :FuzzyFinderTextMate<Enter>
-
-" automatic trailing whitespace triming
-autocmd BufWritePre * :%s/\s\+$//e
+map <C-Left> :tabprev<CR>
+map <C-Right> :tabnext<CR>
+map <C-t> :tabnew<CR>:tabmove<CR>
 
 " navigation through panels
 nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
+
+" move panels to other position
+map <leader>w<Left> <C-w>H
+map <leader>w<Right> <C-w>L
+map <leader>w<Up>  <C-w>K
+map <leader>w<Down> <C-w>J
+
+" automatic trailing whitespace triming
+autocmd BufWritePre * :%s/\s\+$//e
 
 " Save on focus lost or change buffer
 au FocusLost * :wa
@@ -112,6 +109,10 @@ vmap <leader>y "+y
 
 " map ctrl+space to autocompletion
 imap <C-space> <C-p>
+
+" fix for using, at the same time, snipmate(ctrl-tab) and supertab(tab)
+let g:snips_trigger_key='<c-tab>'
+
 highlight Pmenu ctermbg=DarkGray guibg=#646464
 highlight PmenuSel ctermbg=DarkRed guibg=#592929
 
@@ -119,8 +120,9 @@ highlight PmenuSel ctermbg=DarkRed guibg=#592929
 map <leader>c :TComment<CR>
 imap <leader>c <ESC>:TComment<CR>i
 
-" convenient mapping for insert mode
+" convenient mappings
 nnoremap <C-o> o<ESC>
+nmap <space> i <ESC>
 
 inoremap " ""<Left>
 inoremap "" ""
@@ -128,12 +130,7 @@ inoremap "" ""
 inoremap ' ''<Left>
 inoremap '' ''
 
-" syntastic configurations
-" let g:syntastic_mode_map = { 'mode': 'active',
-"             \ 'active_filetypes': ['ruby', 'python', 'javascript', 'coffee', 'json', 'css'],
-"             \ 'passive_filetypes': ['html'] }
-" " set statusline+=%{SyntasticStatuslineFlag()}
-" let g:syntastic_check_on_open=1
+" syntastic settings
 let g:syntastic_python_checker = 'flake8'
 let g:syntastic_python_checker_args = "--ignore=W391,E123,E124,E126,E127,E128"
 let g:syntastic_javascript_checker = 'jslint'
@@ -143,4 +140,12 @@ imap <leader>s <ESC>:SyntasticCheck<CR>i
 
 " coffe maker
 " au BufWritePost *.coffee silent CoffeeMake!
+
+let ropevim_vim_completion=1
+let ropevim_extended_complete=1
+" map <leader>rg :call RopeGotoDefinition() <CR>
+
+" NERDTree mapping
+nnoremap <leader>t :NERDTreeToggle<CR>
+
 

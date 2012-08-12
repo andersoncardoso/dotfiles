@@ -2,7 +2,7 @@
 
 "set guifont=Monaco:h12           " Font family and font size.
 if has("gui_gtk2")
-    set guifont=Ubuntu\ Mono\ 14
+    set guifont=Monaco\ 12
 elseif has("gui_macvim")
     set guifont=Monaco:h12
 end
@@ -18,8 +18,7 @@ set go-=m                         " Hide menu bar
 set background=dark               " Background.
 set lines=35 columns=100          " Window dimensions.
 
-" colorscheme mustang
-colorscheme molokai
+colorscheme mustang
 
 highlight Pmenu guibg=#646464
 highlight PmenuSel guibg=#592929
