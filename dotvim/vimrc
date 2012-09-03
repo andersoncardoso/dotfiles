@@ -47,6 +47,12 @@ set autoindent
 set smarttab
 set autoread                       " auto reload file when it changes
 
+" specific tab size for coffee, js and html
+au FileType coffee setl sw=2 ts=2 sts=2 et
+au FileType javascript setl sw=2 ts=2 sts=2 et
+au FileType html setl sw=2 ts=2 sts=2 et
+au FileType htmldjango setl sw=2 ts=2 sts=2 et
+
 " toggle search highlight
 nnoremap <F3> :set hls!<CR>
 
@@ -107,9 +113,6 @@ let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 map <leader>p "+gP
 vmap <leader>y "+y
 
-" map ctrl+space to autocompletion
-imap <C-space> <C-p>
-
 " fix for using, at the same time, snipmate(ctrl-tab) and supertab(tab)
 let g:snips_trigger_key='<c-tab>'
 
@@ -124,11 +127,6 @@ imap <leader>c <ESC>:TComment<CR>i
 nnoremap <C-o> o<ESC>
 nmap <space> i <ESC>
 
-inoremap " ""<Left>
-inoremap "" ""
-
-inoremap ' ''<Left>
-inoremap '' ''
 
 " syntastic settings
 let g:syntastic_python_checker = 'flake8'
@@ -138,14 +136,10 @@ let g:syntastic_javascript_checker = 'jslint'
 nmap <leader>s :SyntasticCheck<CR>
 imap <leader>s <ESC>:SyntasticCheck<CR>i
 
-" coffe maker
-" au BufWritePost *.coffee silent CoffeeMake!
-
 let ropevim_vim_completion=1
 let ropevim_extended_complete=1
-" map <leader>rg :call RopeGotoDefinition() <CR>
 
 " NERDTree mapping
 nnoremap <leader>t :NERDTreeToggle<CR>
-
+let NERDTreeIgnore = ['\.pyc$']
 

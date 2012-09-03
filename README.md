@@ -101,6 +101,13 @@ need external libraries:
 ```
 
 
+####BufferExplore:
+
+```
+<leader>be      -> open uffer explore
+<leader>bs      -> horizontal split open
+<leader>bv      -> vertical split open
+```
 
 ####Observations:
 
