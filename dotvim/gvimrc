@@ -4,7 +4,7 @@
 if has("gui_gtk2")
     set guifont=Monaco\ 12
 elseif has("gui_macvim")
-    set guifont=Monaco:h12
+    set guifont=Monaco:h14
 end
 
 set antialias                     " MacVim: smooth fonts.
@@ -18,7 +18,7 @@ set go-=m                         " Hide menu bar
 set background=dark               " Background.
 set lines=35 columns=100          " Window dimensions.
 
-colorscheme mustang
+colorscheme Tomorrow-Night
 
 highlight Pmenu guibg=#646464
 highlight PmenuSel guibg=#592929

@@ -73,12 +73,29 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{fugitive#statusline()}\ %{exists('*Cap
 map <C-Left> :tabprev<CR>
 map <C-Right> :tabnext<CR>
 map <C-t> :tabnew<CR>:tabmove<CR>
+if has("unix")
+      let s:uname = system("uname")
+        if s:uname == "Darwin\n"
+                map <D-Left> :tabprev<CR>
+                map <D-Right> :tabnext<CR>
+                map <D-t> :tabnext<CR>:tabmove<CR>
+        endif
+endif
 
 " navigation through panels
 nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
+if has("unix")
+      let s:uname = system("uname")
+        if s:uname == "Darwin\n"
+                map <silent> <S-Up> :wincmd k<CR>
+                map <silent> <S-Down> :wincmd j<CR>
+                map <silent> <S-Left> :wincmd h<CR>
+                map <silent> <S-Right> :wincmd l<CR>
+        endif
+endif
 
 " move panels to other position
 map <leader>w<Left> <C-w>H
@@ -136,8 +153,8 @@ let g:syntastic_javascript_checker = 'jslint'
 nmap <leader>s :SyntasticCheck<CR>
 imap <leader>s <ESC>:SyntasticCheck<CR>i
 
-let ropevim_vim_completion=1
-let ropevim_extended_complete=1
+" let ropevim_vim_completion=1
+" let ropevim_extended_complete=1
 
 " NERDTree mapping
 nnoremap <leader>t :NERDTreeToggle<CR>
