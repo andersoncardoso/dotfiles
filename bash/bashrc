@@ -5,6 +5,14 @@ alias wk="workon "
 
 alias g='git'
 
+_virtualenvs()
+{
+    local cur="${COMP_WORDS[COMP_CWORD]}"
+    COMPREPLY=( $(compgen -W "`ls $WORKON_HOME`" -- ${cur}) )
+}
+
+complete -o default -o nospace -F _virtualenvs wk
+
 function killalltasks {
     KAT_TMP=`ps -eo pid,args | ack $1 | ack -v ack`
     echo $KAT_TMP
