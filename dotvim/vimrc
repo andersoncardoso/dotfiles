@@ -68,6 +68,7 @@ set laststatus=2                  " Show the status line all the time
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{fugitive#statusline()}\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
 " colorscheme vividchalk
+colorscheme desert
 
 " Tab mappings.
 map <C-Left> :tabprev<CR>
@@ -109,6 +110,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Save on focus lost or change buffer
 au FocusLost * :wa
 set autowriteall
+nmap <leader>s :w<CR>
+imap <leader>s <ESC>:w<CR>
 
 " highlights lines over 80 columns
 highlight LineOverWidth guibg=#424242 ctermbg=DarkGray
@@ -127,13 +130,13 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc  " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
 " paste and copy from clipboard with <leader>+p and <leader>+y
-map <leader>p "+gP
-vmap <leader>y "+y
+set clipboard=unnamedplus"
+" map <leader>p "+gP
+" vmap <leader>y "+y
 
 " fix for using, at the same time, snipmate(ctrl-tab) and supertab(tab)
 let g:snips_trigger_key='<c-tab>'
 
-colorscheme desert
 highlight Pmenu ctermbg=LightGray guibg=#646464
 highlight PmenuSel ctermbg=DarkBlue guibg=#592929
 
