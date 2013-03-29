@@ -89,7 +89,7 @@ ex:
 
 ```
 Use <leader>s to trigger Syntastic check.
-He will automatically run when file opens or when the buffer it saved.
+Also runs automatically when the file opens or when the buffer is saved.
 
 need external libraries:
 
@@ -104,15 +104,15 @@ need external libraries:
 ####BufferExplore:
 
 ```
-<leader>be      -> open uffer explore
+<leader>be      -> open buffer explore
 <leader>bs      -> horizontal split open
 <leader>bv      -> vertical split open
 ```
 
 ####Observations:
 
-I invert <ESC> and <CapsLock> keys. I find easier since in vim we have to hit
-<ESC> all the time. If using Gnome (some GNU/linux or *BSD) go to:
+I invert ESC and CapsLock keys. I find easier since in vim we have to hit
+ESC all the time. If using Gnome (some GNU/linux or *BSD) go to:
 system preferences > keyboard > layout > option > "CapsLock key behavior"
 and click on the option "Swap ESC and CapsLock"
 
