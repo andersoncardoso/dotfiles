@@ -45,16 +45,21 @@ Some dotfiles I use:
 - [n] <F3>            => toggle search highlighting
 - [n] <C-o>           => open a new line bellow, but don't change mode
 - [n] <space>         => space on normal mode (usefull for rapid formating)
-- [n] <Shift>arrows   => move to pane (corresponding to the arrow direction)
+
 - [n] <Ctrl>t         => new tab
 - [n] <Ctrl>arrows    => move to left/right tab
+
+- [n] <Shift>arrows   => move to pane (corresponding to the arrow direction)
 - [n] \w<arrows>      => move panel to other position
+- [n] \ws | \wv       => open split pane (s=horiz, v=vert)
+
 - [n] <C-p>           => trigger ctrlP plugin (files fuzzy finder)
 - [n|i] <leader>s     => SyntasticCheck
 - [n|i|v] <leader>c   => tComment
-- [n] \be             => open bufexplorer
-- [n] \bs | \bx       => open bufexplorer on split pane (s=horiz, x=vert)
 - [i] <Ctrl>e         => trigger sparkup (zen-condig)
+
+- [n] \be             => open bufexplorer
+- [n] \bs | \bv       => open bufexplorer on split pane (s=horiz, x=vert)
 ```
 
 OBS:

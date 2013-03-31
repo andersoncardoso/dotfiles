@@ -104,6 +104,10 @@ map <leader>w<Right> <C-w>L
 map <leader>w<Up>  <C-w>K
 map <leader>w<Down> <C-w>J
 
+" open new split pane
+map <leader>ws <ESC>:sp<CR>
+map <leader>wv <ESC>:vs<CR>
+
 " automatic trailing whitespace triming
 autocmd BufWritePre * :%s/\s\+$//e
 
