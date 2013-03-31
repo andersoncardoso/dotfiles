@@ -20,6 +20,7 @@ set lines=35 columns=100          " Window dimensions.
 
 colorscheme Tomorrow-Night
 
+" better autocompletion menu colors
 highlight Pmenu guibg=#646464
 highlight PmenuSel guibg=#592929
 
