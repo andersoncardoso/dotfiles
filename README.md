@@ -1,6 +1,9 @@
 Some dotfiles I use:
 
 - dotvim - my vim configuration and plugins
+- bash - some simple bashrc modifications and aliases
+- zsh - configuration for the zshell
+- gitconfig - my gitconfig file
 
 
 ##To install:
@@ -15,60 +18,49 @@ Some dotfiles I use:
 ```
   done, pathogen takes care of the plugins
 
-  Obs: for ack.vim in ubuntu you need to link ack -> ack-grep
+#### bash
 
+#### zsh
+
+#### gitconfig
 
 ##Dotvim Usage:
 
 **Plugins:**
 
 - pathogen
-- ack
 - ctrlP
-- surround
-- snipMate
-- snipmate-snippets
-- fugitive
-- sparkup
+- nerdTree
 - tComment
 - Syntastic
+- supertab
+- simple-pairs
+- buferexplorer
+- sparkup
 
 
 ####Mappings:
 
 ```
-- [n] <F3>           => toggle serach highlighting
-- [v] <Tab>          => indent block
-- [v] <S-Tab>        => unindent block
-- [n] <leader>p      => paste from OS clipboard
-- [v] <leader>y      => yank to OS clipboard
-- [i] <C-space>      => autocomplete
-- [n] <C-o>          => open a new line bellow, but don't change mode (keep in normal)
-- [i] ( { [ " '      => they all auto closes.
-- [n] <Alt>arrows    => move to pane (corresponding to the arrow direction)
-```
-
-####Usefull:
-
-```
-- :Ack _search_term_  => search _search_term_  through code base
+- [n] <F3>            => toggle search highlighting
+- [n] <C-o>           => open a new line bellow, but don't change mode
+- [n] <space>         => space on normal mode (usefull for rapid formating)
+- [n] <Shift>arrows   => move to pane (corresponding to the arrow direction)
+- [n] <Ctrl>t         => new tab
+- [n] <Ctrl>arrows    => move to left/right tab
+- [n] \w<arrows>      => move panel to other position
 - [n] <C-p>           => trigger ctrlP plugin (files fuzzy finder)
-- :Git                => runs git commands inside vim
 - [n|i] <leader>s     => SyntasticCheck
 - [n|i|v] <leader>c   => tComment
+- [n] \be             => open bufexplorer
+- [n] \bs | \bx       => open bufexplorer on split pane (s=horiz, x=vert)
+- [i] <Ctrl>e         => trigger sparkup (zen-condig)
 ```
 
+OBS:
+- () [] {} "" ''  => all auto close
+- all yanks and pastes work with the system clipboard
 
-####Surround:
-
-```
-- [v] [select]S[surround]
-ex: hello world!  -> v2wS"  -> "hello world!"
-- [i] <C-o>v[select]S[surround]   => <C-o>v on i mode enter in visual i mode.
-- [n] csw'            => he*llo -> 'he*llo'
-- [n] cst<pre>        => <span>hello</span> -> <pre>hello</pre>
-- [n] dst             => <pre>hello</pre> -> hello
-```
 
 ####Sparkup:
 
@@ -111,8 +103,8 @@ need external libraries:
 
 ####Observations:
 
-I invert ESC and CapsLock keys. I find easier since in vim we have to hit
-ESC all the time. If using Gnome (some GNU/linux or *BSD) go to:
+On vim, inverting the ESC and CapsLock it's a good idea.
+If you are using some Gnome-based UI:
 system preferences > keyboard > layout > option > "CapsLock key behavior"
 and click on the option "Swap ESC and CapsLock"
 
