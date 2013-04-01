@@ -22,6 +22,26 @@ Some dotfiles I use:
 
 #### zsh
 
+- install zsh
+
+   sudo apt-get install zsh   # or equivalent for another OS
+
+- install oh-my-zsh
+
+   curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh
+
+- set zsh as your terminal
+
+   chsh -s /bin/zsh
+
+- set our changes:
+
+   mv ~/.zshrc ~/.zshrc.orig
+   ln -s /path-to-dotfiles/zsh/zshrc ~/.zshrc
+   (fix PATH if needed)
+   cp -r /path-to-dotifiles/zsh/themes/* ~/.oh-my-zsh/themes/
+   cp -r /path-to-dotifiles/zsh/custom/* ~/.oh-my-zsh/custom/
+
 #### gitconfig
 
 ##Dotvim Usage:
