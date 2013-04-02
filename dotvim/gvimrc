@@ -18,7 +18,7 @@ set go-=m                         " Hide menu bar
 set background=dark               " Background.
 set lines=35 columns=100          " Window dimensions.
 
-colorscheme Tomorrow-Night
+colorscheme corporation
 
 " better autocompletion menu colors
 highlight Pmenu guibg=#646464
