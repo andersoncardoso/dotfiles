@@ -30,7 +30,7 @@ ZSH_THEME="apierre_cardoso"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git django npm python virtualenvwrapper zsh-syntax-highlighting)
+plugins=(git django npm python virtualenvwrapper zsh-syntax-highlighting pip rvm gem coffee ruby)
 
 fpath=($ZSH/custom/plugins/zsh-completions $fpath)
 
@@ -38,3 +38,5 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/go/bin
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
