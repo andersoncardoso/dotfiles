@@ -59,6 +59,7 @@ Some dotfiles I use:
 - simple-pairs
 - buferexplorer
 - sparkup
+- surround
 
 
 ####Mappings:
