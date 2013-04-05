@@ -89,3 +89,5 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 # export GOPATH=/usr/lib/go
 export PATH=$PATH:/usr/lib/go/bin
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

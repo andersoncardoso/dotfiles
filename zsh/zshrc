@@ -40,3 +40,5 @@ source $ZSH/oh-my-zsh.sh
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/go/bin
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+rvm_project_rvmrc=1
+[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
