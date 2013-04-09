@@ -5,6 +5,9 @@
 #
 alias l='ls -F'
 alias ll='ls -lah'
+alias t='tree'
+alias g='git'
+alias s='svn'
 
 alias wk="workon "
 
