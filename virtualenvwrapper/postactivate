@@ -1,0 +1,6 @@
+#!/bin/bash
+# This hook is run after every virtualenv is activated.
+
+PS1="$_OLD_VIRTUAL_PS1"
+_OLD_PROMPT="$PROMPT"
+PROMPT="%{%K{${bkg}}%}%{${fg_bold[blue]}%}(venv: %{${fg[green]}%}`basename \"$VIRTUAL_ENV\"`%{${fg_bold[white]}%})%{%K{${bkg}}%}  %{${reset_color}%}$PROMPT"
