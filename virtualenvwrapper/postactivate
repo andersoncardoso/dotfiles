@@ -3,4 +3,4 @@
 
 PS1="$_OLD_VIRTUAL_PS1"
 _OLD_PROMPT="$PROMPT"
-PROMPT="%{${fg_bold[blue]}%} (%{${fg[green]}%}`basename \"$VIRTUAL_ENV\"`%{${fg_bold[white]}%})%{${reset_color}%}$PROMPT"
+PROMPT="%{${fg_bold[blue]}%}(%{${fg[green]}%}`basename \"$VIRTUAL_ENV\"`%{${fg_bold[white]}%})%{${reset_color}%} $PROMPT"
