@@ -206,7 +206,7 @@ source ~/.zsh/themes/simplicity.zsh-theme
 if is_mac; then
     export EDITOR='mvim'
 else
-    export EDITOR='gvim'
+    export EDITOR='vim'
 fi
 
 # update title with current working dir
