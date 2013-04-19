@@ -1,33 +1,129 @@
-source ~/.zsh/zshuery.sh
-load_defaults
-load_aliases
-# load_lol_aliases
-load_completion ~/.zsh/completion
-# load_correction
+# Checks
+is_mac() { [[ $OSTYPE == darwin* ]] }
+is_linux() { [[ $OSTYPE == linux-gnu ]] }
 
-# prompts '%{$fg_bold[green]%}$(COLLAPSED_DIR)%{$reset_color%}$(virtualenv_info) %{$fg[yellow]%}$(prompt_char)%{$reset_color%} ' '%{$fg[red]%}$(ruby_version)%{$reset_color%}'
+has_brew() { [[ -n ${commands[brew]} ]] }
+has_apt() { [[ -n ${commands[apt-get]} ]] }
 
+# Settings
+autoload colors; colors;
+load_defaults() {
+    setopt auto_name_dirs
+    setopt pushd_ignore_dups
+    setopt prompt_subst
+    setopt no_beep
+    setopt auto_cd
+    setopt multios
+    setopt cdablevarS
+    setopt transient_rprompt
+    setopt extended_glob
+    autoload -U url-quote-magic
+    zle -N self-insert url-quote-magic
+    autoload -U zmv
+    bindkey "^[m" copy-prev-shell-word
+    HISTFILE=$HOME/.zsh_history
+    HISTSIZE=10000
+    SAVEHIST=10000
+    setopt hist_ignore_dups
+    setopt hist_reduce_blanks
+    setopt share_history
+    setopt append_history
+    setopt hist_verify
+    setopt inc_append_history
+    setopt extended_history
+    setopt hist_expire_dups_first
+    setopt hist_ignore_space
 
-if is_mac; then
-    export EDITOR='mvim'
-else
-    export EDITOR='vim'
-fi
-
-chpwd() {
-    update_terminal_cwd
+    bindkey  "${key[Up]}"    history-search-backward
+    bindkey  "${key[Down]}"  history-search-forward
 }
 
-source ~/.zsh/git.zsh
-source ~/.zsh/themes/blinks_modif.zsh-theme
+# Plug and play
+if [[ -f /etc/zsh_command_not_found ]]; then
+    source /etc/zsh_command_not_found # installed in Ubuntu
+fi
+if [[ -n ${commands[hub]} ]]; then
+    function git(){hub $@}
+fi
+if [[ -n ${commands[jump]} ]]; then
+    jump() {
+        cd $(JUMPPROFILE=1 command jump $@)
+    }
+    alias j="jump -a"
+fi
+if [[ -d /var/lib/gems/1.8/bin ]]; then # oh Debian/Ubuntu
+    export PATH=$PATH:/var/lib/gems/1.8/bin
+fi
 
-alias l='ls -F'
-alias ll='ls -lah'
-alias t='tree'
-alias g='git'
-alias s='svn'
+# RVM or rbenv
+if [[ -s $HOME/.rvm/scripts/rvm ]]; then
+    source $HOME/.rvm/scripts/rvm
+    RUBY_VERSION_PREFIX='r'
+    ruby_version() {
+        if [[ $RUBY_VERSION != "" ]]; then
+            echo $RUBY_VERSION_PREFIX$RUBY_VERSION | sed s/ruby-//
+        else echo ''; fi
+    }
+elif [[ -d $HOME/.rbenv ]]; then
+    export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH
+    source $HOME/.rbenv/completions/rbenv.zsh
+    rbenv rehash 2>/dev/null
+    ruby_version() { rbenv version-name }
+else
+    ruby_version() { echo '' }
+fi
 
-alias wk="workon "
+# Current directory in title
+if [[ $TERM_PROGRAM == "Apple_Terminal" ]]; then
+    update_terminal_cwd() {
+        printf '\e]7;%s\a' "file://$HOST$(pwd | sed -e 's/ /%20/g')"
+    }
+else
+    case $TERM in
+        sun-cmd)
+            update_terminal_cwd() { print -Pn "\e]l%~\e\\" };;
+        *xterm*|rxvt|(dt|k|E)term)
+            update_terminal_cwd() { print -Pn "\e]2;%~\a" };;
+        *)
+            update_terminal_cwd() {};;
+    esac
+fi
+
+
+ex() {
+    if [[ -f $1 ]]; then
+        case $1 in
+          *.tar.bz2) tar xvjf $1;;
+          *.tar.gz) tar xvzf $1;;
+          *.tar.xz) tar xvJf $1;;
+          *.tar.lzma) tar --lzma xvf $1;;
+          *.bz2) bunzip $1;;
+          *.rar) unrar $1;;
+          *.gz) gunzip $1;;
+          *.tar) tar xvf $1;;
+          *.tbz2) tar xvjf $1;;
+          *.tgz) tar xvzf $1;;
+          *.zip) unzip $1;;
+          *.Z) uncompress $1;;
+          *.7z) 7z x $1;;
+          *.dmg) hdiutul mount $1;; # mount OS X disk images
+          *) echo "'$1' cannot be extracted via >ex<";;
+    esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+if has_brew; then
+    inst() { brew install $1 }
+    _inst() { reply=(`brew search`) }
+elif has_apt; then
+    inst() { sudo apt-get install $1 }
+fi
+
+function whereis {
+    find . -iname "$1"
+}
 
 function kill_tasks {
     KAT_TMP=`ps -eo pid,args | ack $1 | ack -v ack`
@@ -35,18 +131,93 @@ function kill_tasks {
     echo $KAT_TMP | cut -c1-6 | xargs kill
 }
 
-# clipboard handling
-alias pbcopy='xclip -selection clipboard'
-alias pbpaste='xclip -selection clipboard -o'
+# Aliases
+load_aliases() {
+    alias ..='cd ..'
+    alias ....='cd ../..'
+    alias wget='wget --no-check-certificate'
 
+    alias l='ls -F'
+    alias ll='ls -lah'
+    alias t='tree'
+    alias g='git'
+    alias s='svn'
+    alias wk="workon "
+    alias fd="whereis "
 
-# Customize to your needs...
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/go/bin
+    if is_linux; then
+        # clipboard handling
+        alias pbcopy='xclip -selection clipboard'
+        alias pbpaste='xclip -selection clipboard -o'
+    fi
+}
 
+# Completion
+load_completion() {
+    # http://www.reddit.com/r/commandline/comments/kbeoe/you_can_make_readline_and_bash_much_more_user/
+    # https://wiki.archlinux.org/index.php/Zsh
+    autoload -U compinit
+    fpath=($* $fpath)
+    fignore=(.DS_Store $fignore)
+    compinit -i
+    zmodload -i zsh/complist
+    setopt complete_in_word
+    setopt auto_remove_slash
+    unsetopt always_to_end
+    has_brew && compctl -K _gimme gimme
+    [[ -f ~/.ssh/known_hosts ]] && hosts=(`awk '{print $1}' ~/.ssh/known_hosts | tr ',' '\n' `)
+    [[ -f ~/.ssh/config ]] && hosts=($hosts `grep '^Host' ~/.ssh/config | sed s/Host\ // | egrep -v '^\*$'`)
+    [[ -f /var/lib/misc/ssh_known_hosts ]] && hosts=($hosts `awk -F "[, ]" '{print $1}' /var/lib/misc/ssh_known_hosts | sort -u`)
+    zstyle ':completion:*' insert-tab pending
+    zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+    highlights='${PREFIX:+=(#bi)($PREFIX:t)(?)*==31=1;32}':${(s.:.)LS_COLORS}}
+    highlights2='=(#bi) #([0-9]#) #([^ ]#) #([^ ]#) ##*($PREFIX)*==1;31=1;35=1;33=1;32=}'
+    zstyle -e ':completion:*' list-colors 'if [[ $words[1] != kill && $words[1] != strace ]]; then reply=( "'$highlights'" ); else reply=( "'$highlights2'" ); fi'
+    unset highlights
+    zstyle ':completion:*' completer _complete _match _approximate
+    zstyle ':completion:*' squeeze-slashes true
+    zstyle ':completion:*' expand 'yes'
+    zstyle ':completion:*:match:*' original only
+    zstyle ':completion:*:approximate:*' max-errors 1 numeric
+    zstyle ':completion:*:hosts' hosts $hosts
+    zstyle ':completion::complete:*' use-cache 1
+    zstyle ':completion::complete:*' cache-path ./cache/
+    zstyle ':completion:*:cd:*' ignore-parents parent pwd
+    zstyle ':completion:*:mpg321:*' file-patterns '*.(mp3|MP3):mp3\ files *(-/):directories'
+    zstyle ':completion:*:ogg123:*' file-patterns '*.(ogg|OGG):ogg\ files *(-/):directories'
+    zstyle ':completion:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+    zstyle ':completion:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
 
+}
+
+# =============================================================================
+# Load nd customize Scetion
+
+load_defaults
+load_aliases
+load_completion ~/.zsh/completion
+
+# theme
+source ~/.zsh/git.zsh
+# source ~/.zsh/themes/blinks_modif.zsh-theme
+source ~/.zsh/themes/simplicity.zsh-theme
+
+# editor setting
+if is_mac; then
+    export EDITOR='mvim'
+else
+    export EDITOR='gvim'
+fi
+
+# update title with current working dir
+chpwd() {
+    update_terminal_cwd
+}
+
+# virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
-# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-# rvm_project_rvmrc=1
-# [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+# Customize PATH
+# # export GOPATH=/usr/lib/go
+# export PATH=$PATH:/usr/lib/go/bin
