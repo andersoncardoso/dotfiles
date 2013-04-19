@@ -10,7 +10,23 @@ Some dotfiles I use:
 
 ##To install:
 
-#### dotvim
+### Automatic:
+
+To install any configuration automatically just use the rake tasks: 
+
+to install vim: ```rake install:vim```
+
+to install zsh: ```rake install:zsh```
+
+and so forth for every configuration
+
+to install everything: ```rake install:all```
+
+OBS: of course you will need ruby and rake for this.
+
+### Manually:
+
+#### vim
 
 ```
     cd ~
@@ -20,11 +36,6 @@ Some dotfiles I use:
 ```
   done, pathogen takes care of the plugins
 
-  OR
-
-```
-    rake install:vim
-```
 
 #### bash
 
@@ -47,22 +58,14 @@ Some dotfiles I use:
    (fix PATH if needed)
 ```
 
-  OR
-
-```
-    rake isntall:zsh
-```
-
 #### gitconfig
-
 
 #### terminator
 
 #### virtualenvwrapper
 
 
-
-##Dotvim Usage:
+##Vim Usage:
 
 **Plugins:**
 
