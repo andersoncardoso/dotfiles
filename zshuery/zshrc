@@ -1,0 +1,52 @@
+source ~/.zshuery/zshuery.sh
+load_defaults
+load_aliases
+# load_lol_aliases
+load_completion ~/.zshuery/completion
+# load_correction
+
+# prompts '%{$fg_bold[green]%}$(COLLAPSED_DIR)%{$reset_color%}$(virtualenv_info) %{$fg[yellow]%}$(prompt_char)%{$reset_color%} ' '%{$fg[red]%}$(ruby_version)%{$reset_color%}'
+
+
+if is_mac; then
+    export EDITOR='mvim'
+else
+    export EDITOR='vim'
+fi
+
+chpwd() {
+    update_terminal_cwd
+}
+
+source ~/.zshuery/git.zsh
+source ~/.zshuery/themes/blinks_modif.zsh-theme
+
+alias l='ls -F'
+alias ll='ls -lah'
+alias t='tree'
+alias g='git'
+alias s='svn'
+
+alias wk="workon "
+
+function kill_tasks {
+    KAT_TMP=`ps -eo pid,args | ack $1 | ack -v ack`
+    echo $KAT_TMP
+    echo $KAT_TMP | cut -c1-6 | xargs kill
+}
+
+# clipboard handling
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
+
+# Customize to your needs...
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/go/bin
+
+
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
+# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# rvm_project_rvmrc=1
+# [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
