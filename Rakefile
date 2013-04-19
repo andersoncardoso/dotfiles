@@ -10,7 +10,10 @@ namespace :install do
     end
 
     task :zsh do
-        puts 'hi from zsh task'
+        puts 'Installing Zsh configuration files'
+        current_dir = Dir.pwd
+        sh "ln -s #{current_dir}/zsh/ ~/.zsh"
+        sh "ln -s ~/.zsh/zshrc ~/.zshrc"
     end
 
     task :bash do
