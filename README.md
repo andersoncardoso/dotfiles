@@ -4,6 +4,8 @@ Some dotfiles I use:
 - bash - some simple bashrc modifications and aliases
 - zsh - configuration for the zshell
 - gitconfig - my gitconfig file
+- terminator - terminator solarized theme
+- virtualenvwrapper - hooks for better prompts on zsh
 
 
 ##To install:
@@ -18,6 +20,12 @@ Some dotfiles I use:
 ```
   done, pathogen takes care of the plugins
 
+  OR
+
+```
+    rake install:vim
+```
+
 #### bash
 
 #### zsh
@@ -25,10 +33,6 @@ Some dotfiles I use:
 - install zsh
 
    ```sudo apt-get install zsh   # or equivalent for another OS```
-
-- install oh-my-zsh
-
-   ```curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh```
 
 - set zsh as your terminal
 
@@ -38,13 +42,25 @@ Some dotfiles I use:
 
 ```
    mv ~/.zshrc ~/.zshrc.orig
+   cp -r /path-to-dotifiles/zsh ~/.zsh
    ln -s /path-to-dotfiles/zsh/zshrc ~/.zshrc
    (fix PATH if needed)
-   cp -r /path-to-dotifiles/zsh/themes/* ~/.oh-my-zsh/themes/
-   cp -r /path-to-dotifiles/zsh/custom/* ~/.oh-my-zsh/custom/
+```
+
+  OR
+
+```
+    rake isntall:zsh
 ```
 
 #### gitconfig
+
+
+#### terminator
+
+#### virtualenvwrapper
+
+
 
 ##Dotvim Usage:
 
