@@ -58,7 +58,7 @@ namespace :install do
         packages = [
             'tree', 'git', 'vim', 'vim-gtk', 'terminator', 'ack-grep', 'npm',
             'python-dev', 'python-pip', 'zsh', 'curl', 'build-essential',
-            'meld', 'chromium-bowser', 'vlc', 'gnome-shell', 'gnome-do',
+            'meld', 'chromium-browser', 'vlc', 'gnome-shell', 'gnome-do',
             'gnome-tweak-tool'
         ].join(' ')
         sh "sudo apt-get install #{packages} -y"
