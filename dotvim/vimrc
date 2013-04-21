@@ -53,6 +53,8 @@ au FileType coffee setl sw=2 ts=2 sts=2 et
 au FileType javascript setl sw=2 ts=2 sts=2 et
 au FileType html setl sw=2 ts=2 sts=2 et
 au FileType htmldjango setl sw=2 ts=2 sts=2 et
+au FileType ruby setl sw=2 ts=2 sts=2 et
+au FileType eruby setl sw=2 ts=2 sts=2 et
 
 " toggle search highlight
 nnoremap <F3> :set hls!<CR>
