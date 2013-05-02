@@ -16,9 +16,10 @@ namespace :install do
 
     task :zsh do
         puts 'Installing Zsh configuration files'
-        sh "mv ~/.zshrc ~/.zshrc.orig"
+        # sh "mv ~/.zshrc ~/.zshrc.orig"
         sh "ln -s #{$current_dir}/zsh/ ~/.zsh"
         sh "ln -s ~/.zsh/zshrc ~/.zshrc"
+        sh "chsh -s /bin/zsh"
     end
 
     task :bash do
