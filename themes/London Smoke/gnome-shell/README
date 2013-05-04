@@ -1,0 +1,55 @@
+This is the London Smoke GNOME-Shell theme. 
+It's based on my London Smoke GTK2 theme: http://therealpadster.deviantart.com/art/London-Smoke-195527397
+London Smoke is based on ceebeebg's mockup: http://gnome-look.org/content/show.php?action=content&content=136369
+If you're thinking it looks a lot like Atolm, that is because Atolm is also based on the above mockup.
+Half-Left's Atolm GNOME-Shell theme was used as a base: http://half-left.deviantart.com/art/GNOME-Shell-Atolm-204534789
+
+If you change the font-scaling factor (in GNOME Tweak Tool), the menus may look messed up. 
+To fix them, you can change the padding values in ".popup-menu-item:active" to:
+
+padding-top: 5px; /*LOOK -needed?*/
+padding-bottom: 5px;
+padding-left: 27px;
+padding-right: 27px;
+
+Thanks to Radist Morse for the tip. 
+
+Also, any comments containing "??" in the gnome-shell.css are markers to show me that I don't know what's going on there, or why something isn't working, so if you know, it would be great if you could add the function in, and give me a yell ;)
+
+Changelog:
+1.01: 
+-moved to latest Adwaita codebase (better support for certain things, like rtl)
+-added 2px padding in between shell-tab-switchers
+-revamped corner-ripple
+-bigger icons in search-results
+-various other improvements in search-results
+
+1.02:
+-fixed padding issues with messaging-notification-bar-right-click-menu
+-fixed search-engine buttons (made them fit in more, and added hover/pressed functionality
+
+1.2:
+-ported over to new GNOME-Shell 3.2 base (added many new features)
+-cleaned up notification-popups code
+-added inner highlight to menus, removed shadows
+-added 100ms transitions to many things
+-changed workspace-thumbnail highlight
+
+1.2.1:
+-moved the readme from the gnome-shell.css to a separate file
+-added instructions for fixing the menus with font-scaling factor at 1.2
+
+1.2.2:
+-fixed spacing between "Windows" and "Applications" buttons
+
+1.2.3:
+-removed icon from shutdown dialog, since it has been discontinued
+
+1.3:
+-GNOME-Shell 3.4
+-tweaked submenus
+-fixed jumping summary-buttons
+-added some missing things
+-improved visibility of text on hover-buttons
+-changed transitions on buttons from 100 to 200 (smoother)
+-other random bug fixes
