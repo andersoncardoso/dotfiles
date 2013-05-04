@@ -56,6 +56,11 @@ namespace :install do
     sh "sudo apt-get install gnome-shell gnome-tweak-tool -y"
   end
 
+  task :themes do
+    sh "sudo cp -r #{current_dir}/themes/* /usr/share/themes/"
+    sh "cp -r {current_dir}/gnome-shell/* ~/.local/share/gnome-shell/extensions/"
+  end
+
   task :ubuntu do
     sh "sudo apt-add-repository ppa:mozillateam/firefox-next"
     sh "sudo apt-get update"
