@@ -50,20 +50,22 @@ namespace :install do
     sh "curl -#L https://get.rvm.io | bash -s stable --autolibs=3 --ruby"
   end
 
+  task :gnome_shell do
+    sh "sudo apt-add-repository ppa:gnome3-team/gnome3"
+    sh "sudo apt-get upgrade"
+    sh "sudo apt-get install gnome-shell gnome-tweak-tool -y"
+  end
+
   task :ubuntu do
-    ppas = ['ppa:mozillateam/firefox-next', 'ppa:gnome3-team/gnome3']
-    ppas.each do |ppa|
-      sh "sudo apt-add-repository #{ppa}"
-      sh "sudo apt-get update"
-    end
+    sh "sudo apt-add-repository ppa:mozillateam/firefox-next"
+    sh "sudo apt-get update"
     sh "sudo apt-get upgrade"
 
     # install packages
     packages = [
       'tree', 'git', 'vim', 'vim-gtk', 'terminator', 'ack-grep', 'npm',
       'python-dev', 'python-pip', 'zsh', 'curl', 'build-essential',
-      'meld', 'chromium-browser', 'vlc', 'gnome-shell', 'gnome-do',
-      'gnome-tweak-tool'
+      'meld', 'chromium-browser', 'vlc', 'gnome-do',
     ].join(' ')
     sh "sudo apt-get install #{packages} -y"
 
