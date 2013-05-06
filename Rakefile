@@ -2,6 +2,10 @@
 
 $current_dir = Dir.pwd
 
+def home_dir(path)
+  File.join(Dir.home, path)
+end
+
 namespace :install do
   task :vim do
     puts 'Installing Vim configuration files'
@@ -16,7 +20,9 @@ namespace :install do
 
   task :zsh do
     puts 'Installing Zsh configuration files'
-    sh "mv ~/.zshrc ~/.zshrc.orig" if File.exist?('~/.zshrc')
+    if File.exist? home_dir '.zshrc'
+      sh "mv ~/.zshrc ~/.zshrc.orig"
+    end
     sh "ln -s #{$current_dir}/zsh/ ~/.zsh"
     sh "ln -s ~/.zsh/zshrc ~/.zshrc"
     sh "chsh -s /bin/zsh"
@@ -24,7 +30,7 @@ namespace :install do
 
   task :bash do
     puts 'Installing Bashrc'
-    sh "mv ~/.bashrc ~/.bashrc.orig" if File.exist? '~/.bashrc'
+    sh "mv ~/.bashrc ~/.bashrc.orig"
     sh "ln -s #{$current_dir}/bash/bashrc ~/.bashrc"
   end
 
@@ -33,7 +39,7 @@ namespace :install do
   end
 
   task :terminator do
-    if not File.exist? "~/.config/terminator"
+    if not File.exist? home_dir ".config/terminator"
       sh 'mkdir ~/.config/terminator'
     end
     sh "ln -s #{$current_dir}/terminator/config ~/.config/terminator/config"
@@ -41,7 +47,11 @@ namespace :install do
 
   task :virtualenv do
     sh "sudo pip install virtualenvwrapper"
-    sh "rm ~/.virtualenvs/postactivate ~/.virtualenvs/postdeactivate"
+    if File.exist? home_dir ".virtualenvs"
+      sh "rm ~/.virtualenvs/postactivate ~/.virtualenvs/postdeactivate"
+    else
+      sh "mkdir ~/.virtualenvs"
+    end
     sh "ln -s #{$current_dir}/virtualenvwrapper/postactivate ~/.virtualenvs/postactivate"
     sh "ln -s #{$current_dir}/virtualenvwrapper/postdeactivate ~/.virtualenvs/postdeactivate"
   end
@@ -57,8 +67,8 @@ namespace :install do
   end
 
   task :themes do
-    sh "sudo cp -r #{current_dir}/themes/* /usr/share/themes/"
-    sh "cp -r {current_dir}/gnome-shell/* ~/.local/share/gnome-shell/extensions/"
+    sh "sudo cp -r #{$current_dir}/themes/* /usr/share/themes/"
+    sh "cp -r #{$current_dir}/gnome-shell/* ~/.local/share/gnome-shell/extensions/"
   end
 
   task :ubuntu do
