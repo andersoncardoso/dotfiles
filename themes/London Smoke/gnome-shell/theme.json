@@ -1,0 +1,11 @@
+{ 
+   "shell-theme": {
+       "name": "London Smoke", 
+       "author": "Padster", 
+       "version": "1.3",
+       "type": "custom",
+       "disabled": false,
+       "thumbnail": "preview-london-smoke.jpg", 
+       "url": "http://therealpadster.deviantart.com/art/London-Smoke-Gnome-Shell-207708800" 
+   }
+}
