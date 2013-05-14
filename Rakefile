@@ -61,9 +61,10 @@ namespace :install do
   end
 
   task :gnome_shell do
-    sh "sudo apt-add-repository ppa:gnome3-team/gnome3"
-    sh "sudo apt-get upgrade"
-    sh "sudo apt-get install gnome-shell gnome-tweak-tool -y"
+    # sh "sudo apt-add-repository ppa:gnome3-team/gnome3"
+    # sh "sudo apt-get update"
+    sh "sudo apt-get install gnome-shell -y"
+    sh "sudo apt-get install gnome-tweak-tool gnome-sushi -y"
   end
 
   task :themes do
