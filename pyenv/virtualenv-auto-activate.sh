@@ -23,7 +23,7 @@ function _virtualenv_auto_activate() {
               _VENV_NAME=$(basename $_VENV_PATH)
               workon $_VENV_NAME
             fi
-            echo Activated virtualenv \"$_VENV_NAME\".
+            # echo Activated virtualenv \"$_VENV_NAME\".
         fi
     fi
 }
