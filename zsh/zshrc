@@ -34,8 +34,13 @@ load_defaults() {
     setopt hist_expire_dups_first
     setopt hist_ignore_space
 
-    bindkey  "${key[Up]}"    history-search-backward
-    bindkey  "${key[Down]}"  history-search-forward
+    if is_linux;then
+        bindkey  "${key[Up]}"    history-search-backward
+        bindkey  "${key[Down]}"  history-search-forward
+    else
+        bindkey '^[[A' history-search-backward
+        bindkey '^[[B' history-search-forward
+    fi
 }
 
 # Plug and play
@@ -214,10 +219,30 @@ chpwd() {
     update_terminal_cwd
 }
 
-# virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+export PATH=/usr/local/bin:$PATH
+
 
 # Customize PATH
 # # export GOPATH=/usr/lib/go
 # export PATH=$PATH:/usr/lib/go/bin
+export PATH=$PATH:$HOME/.rvm/bin
+
+if is_mac; then
+   # export PATH=$PATH:/usr/local/share/python:/usr/local/share/npm/bin
+   export PATH=$PATH:/usr/local/share/npm/bin
+fi
+
+if [[ -d $HOME/.pyenv ]];then
+    export PATH="$HOME/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    source ~/.pyenv/plugins/pyenv-autoenv/bin/pyenv-autoenv
+fi
+
+# virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+if is_mac; then
+#     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+    source ~/.pyenv/versions/$(pyenv global)/bin/virtualenvwrapper.sh
+else
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
