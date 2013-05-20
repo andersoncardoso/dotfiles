@@ -8,7 +8,7 @@ else
     FNAME="$HOME/.bashrc"
 fi
 
-echo "print to $FNAME"
+echo "Adding settings to $FNAME"
 echo "" >> $FNAME
 echo "# settings up PYENV" >> $FNAME
 echo "if [[ -d \$HOME/.pyenv ]];then" >> $FNAME
