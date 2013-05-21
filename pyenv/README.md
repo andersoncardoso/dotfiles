@@ -1,6 +1,6 @@
 ## Install
 
-curl https://raw.github.com/andersoncardoso/dotfiles/master/pyenv/install_pyenv.sh | sh
+    curl https://raw.github.com/andersoncardoso/dotfiles/master/pyenv/install_pyenv.sh | sh
 
 ### manually:
 

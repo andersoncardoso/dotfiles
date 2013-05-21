@@ -1,5 +1,5 @@
-git clone git@github.com:andersoncardoso/pyenv.git ~/.pyenv
-git clone git@github.com:andersoncardoso/pyenv-autoenv.git ~/.pyenv/plugins/pyenv-autoenv
+git clone git://github.com/andersoncardoso/pyenv.git ~/.pyenv
+git clone git://github.com/andersoncardoso/pyenv-autoenv.git ~/.pyenv/plugins/pyenv-autoenv
 
 SHELL_NAME=`basename $( ps h p $$ | awk '{ print $NF }' )`
 if [ "$SHELL_NAME" = "zsh" ];then
