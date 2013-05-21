@@ -221,14 +221,7 @@ chpwd() {
 
 export PATH=/usr/local/bin:$PATH
 
-
-# Customize PATH
-# # export GOPATH=/usr/lib/go
-# export PATH=$PATH:/usr/lib/go/bin
-export PATH=$PATH:$HOME/.rvm/bin
-
 if is_mac; then
-   # export PATH=$PATH:/usr/local/share/python:/usr/local/share/npm/bin
    export PATH=$PATH:/usr/local/share/npm/bin
 fi
 
@@ -244,11 +237,6 @@ fi
 
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
-if is_mac; then
-#     export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
-    source ~/.pyenv/versions/$(pyenv global)/bin/virtualenvwrapper.sh
-else
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
+source ~/.pyenv/versions/$(pyenv global)/bin/virtualenvwrapper.sh
 
 [[ -s /home/anderson/.nvm/nvm.sh ]] && . /home/anderson/.nvm/nvm.sh # This loads NVM
