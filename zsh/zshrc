@@ -232,10 +232,14 @@ if is_mac; then
    export PATH=$PATH:/usr/local/share/npm/bin
 fi
 
-if [[ -d $HOME/.pyenv ]];then
-    export PATH="$HOME/.pyenv/bin:$PATH"
+if [[ -d $HOME/.pyenv ]]; then
+    export PATH="$HOME/.pyenv/bin:$HOME/.pyenv/shims:$PATH"
     eval "$(pyenv init -)"
+    pyenv rehash 2>/dev/null
+    python_version() { pyenv version-name }
     source ~/.pyenv/plugins/pyenv-autoenv/bin/pyenv-autoenv
+else
+    python_version() { echo '' }
 fi
 
 # virtualenvwrapper
@@ -246,3 +250,5 @@ if is_mac; then
 else
     source /usr/local/bin/virtualenvwrapper.sh
 fi
+
+[[ -s /home/anderson/.nvm/nvm.sh ]] && . /home/anderson/.nvm/nvm.sh # This loads NVM
