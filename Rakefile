@@ -73,7 +73,7 @@ namespace :install do
   end
 
   task :ubuntu do
-    sh "sudo apt-add-repository ppa:mozillateam/firefox-next"
+    # sh "sudo apt-add-repository ppa:mozillateam/firefox-next"
     sh "sudo apt-get update"
     sh "sudo apt-get upgrade"
 
