@@ -237,6 +237,14 @@ fi
 
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
-source ~/.pyenv/versions/$(pyenv global)/bin/virtualenvwrapper.sh
+if [[ $(pyenv global) == system ]]; then
+    if is_mac; then
+        source /usr/local/share/python/virtualenvwrapper.sh
+    else
+        source /usr/local/bin/virtualenvwrapper.sh
+    fi
+else
+    source ~/.pyenv/versions/$(pyenv global)/bin/virtualenvwrapper.sh
+fi
 
 [[ -s /home/anderson/.nvm/nvm.sh ]] && . /home/anderson/.nvm/nvm.sh # This loads NVM
