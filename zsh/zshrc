@@ -149,6 +149,7 @@ load_aliases() {
     alias s='svn'
     alias wk="workon "
     alias fd="whereis "
+    alias sl="shovel "
 
     if is_linux; then
         # clipboard handling
