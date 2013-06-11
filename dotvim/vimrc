@@ -135,7 +135,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.swo,*.zip,*.pyc  " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
 " paste and copy from clipboard
-set clipboard=unnamedplus"
+set clipboard=unnamed
 
 " fix for using, at the same time, snipmate(ctrl-tab) and supertab(tab)
 let g:snips_trigger_key='<c-tab>'
