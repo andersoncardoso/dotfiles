@@ -2,7 +2,7 @@
 
 "set guifont=Monaco:h12           " Font family and font size.
 if has("gui_gtk2")
-    set guifont=Source\ Code\ Pro\ Semibold\ 12
+    set guifont=Source\ Code\ Pro\ Semibold\ 10
     " set guifont=monofur\ bold\ 14
 elseif has("gui_macvim")
     set guifont=Monaco:h14
@@ -23,7 +23,7 @@ set lines=35 columns=100          " Window dimensions.
 let g:solarized_termcolors=256
 
 " colorscheme corporation
-colorscheme solarized
+colorscheme twilight
 
 " better autocompletion menu colors
 highlight Pmenu guibg=#646464

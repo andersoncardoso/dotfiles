@@ -203,9 +203,8 @@ load_defaults
 load_aliases
 load_completion ~/.zsh/completion
 
-# theme
 source ~/.zsh/git.zsh
-# source ~/.zsh/themes/blinks_modif.zsh-theme
+# theme
 source ~/.zsh/themes/simplicity.zsh-theme
 
 # editor setting
