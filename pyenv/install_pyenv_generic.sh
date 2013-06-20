@@ -9,16 +9,16 @@ else
 fi
 
 cat >> $FNAME << EOL
-if [[ -d $HOME/.pyenv ]]; then
-    export PATH="$HOME/.pyenv/bin:$HOME/.pyenv/shims:$PATH"
-    eval "$(pyenv init -)"
+if [[ -d \$HOME/.pyenv ]]; then
+    export PATH="\$HOME/.pyenv/bin:\$HOME/.pyenv/shims:\$PATH"
+    eval "\$(pyenv init -)"
     pyenv rehash 2>/dev/null
     source ~/.pyenv/plugins/pyenv-autoenv/bin/pyenv-autoenv
 fi
 
 # virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-source ~/.pyenv/versions/$(pyenv global)/bin/virtualenvwrapper.sh
+export WORKON_HOME=\$HOME/.virtualenvs
+source ~/.pyenv/versions/\$(pyenv global)/bin/virtualenvwrapper.sh
 EOL
 
-source "$FNAME"
+# source "$FNAME"
