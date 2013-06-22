@@ -172,3 +172,9 @@ let NERDTreeIgnore = ['\.pyc$']
 nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 call yankstack#setup()
+
+" Ident Guides
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+nmap <silent> <Leader>ii <Plug>IndentGuidesToggle
+

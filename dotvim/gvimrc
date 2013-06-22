@@ -27,5 +27,6 @@ colorscheme twilight
 
 " better autocompletion menu colors
 highlight Pmenu guibg=#646464
+highlight Pmenu guifg=#dedede
 highlight PmenuSel guibg=#592929
 
