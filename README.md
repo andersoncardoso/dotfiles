@@ -12,7 +12,7 @@ Some dotfiles I use:
 
 ### Automatic:
 
-To install any configuration automatically just use the rake tasks: 
+To install any configuration automatically just use the rake tasks:
 
 to install vim: ```rake install:vim```
 
@@ -79,29 +79,36 @@ OBS: of course you will need ruby and rake for this.
 - buferexplorer
 - sparkup
 - surround
+- easymotion
+- indent-guides
 
 
 ####Mappings:
 
 ```
-- [n] <F3>            => toggle search highlighting
-- [n] <C-o>           => open a new line bellow, but don't change mode
-- [n] <space>         => space on normal mode (usefull for rapid formating)
+- [n] <F3>             => toggle search highlighting
+- [n] <C-o>            => open a new line bellow, but don't change mode
+- [n] <space>          => space on normal mode (usefull for rapid formating)
 
-- [n] <Ctrl>t         => new tab
-- [n] <Ctrl>arrows    => move to left/right tab
+- [n] <Ctrl>t          => new tab
+- [n] <Ctrl>arrows     => move to left/right tab
 
-- [n] <Shift>arrows   => move to pane (corresponding to the arrow direction)
-- [n] \w<arrows>      => move panel to other position
-- [n] \ws | \wv       => open split pane (s=horiz, v=vert)
+- [n] <Shift>arrows    => move to pane (corresponding to the arrow direction)
+- [n] \w<arrows>       => move panel to other position
+- [n] \ws | \wv        => open split pane (s=horiz, v=vert)
 
-- [n] <C-p>           => trigger ctrlP plugin (files fuzzy finder)
-- [n|i] <leader>s     => SyntasticCheck
-- [n|i|v] <leader>c   => tComment
-- [i] <Ctrl>e         => trigger sparkup (zen-condig)
+- [n] <C-p>            => trigger ctrlP plugin (files fuzzy finder)
+- [n|i] <leader>s      => SyntasticCheck
+- [n|i|v] <leader>c    => tComment
+- [i] <Ctrl>e          => trigger sparkup (zen-condig)
 
-- [n] \be             => open bufexplorer
-- [n] \bs | \bv       => open bufexplorer on split pane (s=horiz, x=vert)
+- [n] \be              => open bufexplorer
+- [n] \bs | \bv        => open bufexplorer on split pane (s=horiz, x=vert)
+
+- [n] <ld><ld><motion> => fire easymotion for that motion (w, b, j, k, W, B)
+- [n] <ld><ld>f<char>  => fire easymotion for that char
+
+- [n] <ld>ii           => toggle indent guides
 ```
 
 OBS:
