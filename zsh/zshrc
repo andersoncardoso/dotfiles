@@ -214,6 +214,10 @@ else
     export EDITOR='vim'
 fi
 
+# vi keybindings
+set -o vi
+
+
 # update title with current working dir
 chpwd() {
     update_terminal_cwd
@@ -248,3 +252,4 @@ else
 fi
 
 [[ -s /home/anderson/.nvm/nvm.sh ]] && . /home/anderson/.nvm/nvm.sh # This loads NVM
+
