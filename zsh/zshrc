@@ -253,3 +253,5 @@ fi
 
 [[ -s /home/anderson/.nvm/nvm.sh ]] && . /home/anderson/.nvm/nvm.sh # This loads NVM
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

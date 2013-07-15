@@ -1,6 +1,6 @@
 Some dotfiles I use:
 
-- dotvim - my vim configuration and plugins
+- vim - my vim configuration and plugins
 - bash - some simple bashrc modifications and aliases
 - zsh - configuration for the zshell
 - gitconfig - my gitconfig file
@@ -30,7 +30,7 @@ OBS: of course you will need ruby and rake for this.
 
 ```
     cd ~
-    cp -r /path/to/dotfiles/dotvim/ .vim
+    cp -r /path/to/dotfiles/vim/ .vim
     ln -s ~/.vim/vimrc ~/.vimrc
     ln -s ~/.vim/gvimrc ~/.gvimrc
 ```

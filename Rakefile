@@ -9,7 +9,7 @@ end
 namespace :install do
   task :vim do
     puts 'Installing Vim configuration files'
-    sh "ln -s #{$current_dir}/dotvim/ ~/.vim"
+    sh "ln -s #{$current_dir}/vim/ ~/.vim"
     sh "ln -s ~/.vim/vimrc ~/.vimrc"
     sh "ln -s ~/.vim/gvimrc ~/.gvimrc"
 
@@ -30,7 +30,9 @@ namespace :install do
 
   task :bash do
     puts 'Installing Bashrc'
-    sh "mv ~/.bashrc ~/.bashrc.orig"
+    if File.exist? home_dir '.bashrc'
+      sh "mv ~/.bashrc ~/.bashrc.orig"
+    end
     sh "ln -s #{$current_dir}/bash/bashrc ~/.bashrc"
   end
 
@@ -56,8 +58,16 @@ namespace :install do
     sh "ln -s #{$current_dir}/virtualenvwrapper/postdeactivate ~/.virtualenvs/postdeactivate"
   end
 
+  task :pyenv do
+    sh "sh #{$current_dir}/pyenv/install_pyenv.sh"
+  end
+
   task :rvm do
     sh "curl -#L https://get.rvm.io | bash -s stable --autolibs=3 --ruby"
+  end
+
+  task :nvm do
+    sh "curl https://raw.github.com/creationix/nvm/master/install.sh | sh"
   end
 
   task :gnome_shell do
