@@ -91,15 +91,6 @@ nmap <silent> <S-Up> :wincmd k<CR>
 nmap <silent> <S-Down> :wincmd j<CR>
 nmap <silent> <S-Left> :wincmd h<CR>
 nmap <silent> <S-Right> :wincmd l<CR>
-" if has("unix")
-"       let s:uname = system("uname")
-"         if s:uname == "Darwin\n"
-"                 map <silent> <S-Up> :wincmd k<CR>
-"                 map <silent> <S-Down> :wincmd j<CR>
-"                 map <silent> <S-Left> :wincmd h<CR>
-"                 map <silent> <S-Right> :wincmd l<CR>
-"         endif
-" endif
 
 " move panels to other position
 map <leader>w<Left> <C-w>H
@@ -135,10 +126,8 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.swo,*.zip,*.pyc  " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
 " paste and copy from clipboard
-set clipboard=unnamed
-
-" fix for using, at the same time, snipmate(ctrl-tab) and supertab(tab)
-let g:snips_trigger_key='<c-tab>'
+" set clipboard=unnamed
+set clipboard=unnamedplus
 
 " better autocompletion menu colors
 highlight Pmenu ctermbg=LightGray guibg=#646464
@@ -154,15 +143,13 @@ nmap <space> i <ESC>
 
 
 " syntastic settings
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_python_checker = 'flake8'
 let g:syntastic_python_checker_args = "--ignore=W391,W404,E123,E124,E126,E127,E128,F403"
 let g:syntastic_javascript_checker = 'jshint'
 
 nmap <leader>s :SyntasticCheck<CR>
 imap <leader>s <ESC>:SyntasticCheck<CR>i
-
-" let ropevim_vim_completion=1
-" let ropevim_extended_complete=1
 
 " NERDTree mapping
 nnoremap <leader>t :NERDTreeToggle<CR>
@@ -173,11 +160,7 @@ nmap <leader>p <Plug>yankstack_substitute_older_paste
 nmap <leader>P <Plug>yankstack_substitute_newer_paste
 call yankstack#setup()
 
-" Ident Guides
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-nmap <silent> <Leader>ii <Plug>IndentGuidesToggle
-
-" ZoomWin
-nmap <leader>z <Plug>ZoomWin
-
+" Indentline
+let g:indentLine_enabled = 0
+let g:indentLine_char = '┆'
+nmap <leader>i :IndentLinesToggle<CR>

@@ -149,7 +149,6 @@ load_aliases() {
     alias s='svn'
     alias wk="workon "
     alias fd="whereis "
-    alias sl="shovel "
 
     if is_linux; then
         # clipboard handling
@@ -254,4 +253,4 @@ fi
 [[ -s /home/anderson/.nvm/nvm.sh ]] && . /home/anderson/.nvm/nvm.sh # This loads NVM
 
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$HOME/bin:$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting

@@ -13,6 +13,7 @@
 	status = auto
 [core]
 	editor = vim
+	excludesfile = ~/.gitignore
 [alias]
 	cm = commit
 	st = status
