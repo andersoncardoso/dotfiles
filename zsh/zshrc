@@ -216,7 +216,7 @@ if [[ -d $HOME/.pyenv ]]; then
     eval "$(pyenv init -)"
     pyenv rehash 2>/dev/null
     python_version() { pyenv version-name }
-    source ~/.pyenv/plugins/pyenv-autoenv/bin/pyenv-autoenv
+    # source ~/.pyenv/plugins/pyenv-autoenv/bin/pyenv-autoenv
 else
     python_version() { echo '' }
 fi
