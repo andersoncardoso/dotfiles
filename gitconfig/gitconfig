@@ -24,4 +24,3 @@
 	co = checkout
 	lg = log --decorate --graph --pretty=format:\"%Cgreen%h%Creset %s %Cblue(%an)%Creset\"
 [push]
-	default = simple

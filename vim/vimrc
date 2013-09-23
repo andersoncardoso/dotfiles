@@ -8,6 +8,7 @@ syntax enable                     " Turn on syntax highlighting.
 filetype plugin on                " Turn on file type detection.
 filetype indent on
 
+set shell=sh
 
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.

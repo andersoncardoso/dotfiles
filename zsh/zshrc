@@ -34,13 +34,8 @@ load_defaults() {
     setopt hist_expire_dups_first
     setopt hist_ignore_space
 
-    if is_linux;then
-        bindkey  "${key[Up]}"    history-search-backward
-        bindkey  "${key[Down]}"  history-search-forward
-    else
-        bindkey '^[[A' history-search-backward
-        bindkey '^[[B' history-search-forward
-    fi
+    bindkey '^[[A' history-search-backward
+    bindkey '^[[B' history-search-forward
 }
 
 # Plug and play
@@ -119,13 +114,6 @@ ex() {
     fi
 }
 
-if has_brew; then
-    inst() { brew install $1 }
-    _inst() { reply=(`brew search`) }
-elif has_apt; then
-    inst() { sudo apt-get install $1 }
-fi
-
 function whereis {
     find . -iname "$1"
 }
@@ -139,7 +127,6 @@ function kill_tasks {
 # Aliases
 load_aliases() {
     alias ..='cd ..'
-    alias ....='cd ../..'
     alias wget='wget --no-check-certificate'
 
     alias l='ls -F'
@@ -213,10 +200,6 @@ else
     export EDITOR='vim'
 fi
 
-# vi keybindings
-set -o vi
-
-
 # update title with current working dir
 chpwd() {
     update_terminal_cwd
@@ -250,7 +233,8 @@ else
     source ~/.pyenv/versions/$(pyenv global)/bin/virtualenvwrapper.sh
 fi
 
-[[ -s /home/anderson/.nvm/nvm.sh ]] && . /home/anderson/.nvm/nvm.sh # This loads NVM
+[[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh # This loads NVM
 
+export CODE_PATH=~/code
 
-PATH=$HOME/bin:$HOME/.rvm/bin:$PATH # Add RVM to PATH for scripting
+PATH=$HOME/bin:$HOME/.rvm/bin:$CODE_PATH/elixir/bin:$PATH
