@@ -42,20 +42,15 @@ set nowritebackup                 " And again.
 set directory^=$HOME/.vim/tmp//   " Keep swap files in one location
 
 set expandtab                    " Use spaces instead of tabs
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set autoindent
 set smarttab
 set autoread                       " auto reload file when it changes
 
 " specific tab size for coffee, js and html
-au FileType coffee setl sw=2 ts=2 sts=2 et
-au FileType javascript setl sw=2 ts=2 sts=2 et
-au FileType html setl sw=2 ts=2 sts=2 et
-au FileType htmldjango setl sw=2 ts=2 sts=2 et
-au FileType ruby setl sw=2 ts=2 sts=2 et
-au FileType eruby setl sw=2 ts=2 sts=2 et
+au FileType python setl sw=4 ts=4 sts=4 et
 
 " toggle search highlight
 nnoremap <F3> :set hls!<CR>
@@ -68,10 +63,7 @@ vmap >  >gv
 vmap <  <gv
 
 set laststatus=2                  " Show the status line all the time
-" Useful status information at bottom of screen
-" set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{fugitive#statusline()}\ %{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
-" colorscheme vividchalk
 colorscheme desert
 
 " Tab mappings.
@@ -127,8 +119,14 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.swo,*.zip,*.pyc  " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
 " paste and copy from clipboard
-" set clipboard=unnamed
-set clipboard=unnamedplus
+if has("unix")
+      let s:uname = system("uname")
+        if s:uname == "Darwin\n"
+            set clipboard=unnamed
+        else
+            set clipboard=unnamedplus
+        endif
+endif
 
 " better autocompletion menu colors
 highlight Pmenu ctermbg=LightGray guibg=#646464
