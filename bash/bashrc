@@ -1,11 +1,6 @@
 alias l='ls -F'
 alias ll='ls -lah'
 
-alias wk="workon "
-
-alias g='git'
-alias s='svn'
-
 _virtualenvs()
 {
     local cur="${COMP_WORDS[COMP_CWORD]}"
@@ -13,12 +8,6 @@ _virtualenvs()
 }
 
 complete -o default -o nospace -F _virtualenvs wk
-
-function killalltasks {
-    KAT_TMP=`ps -eo pid,args | ack $1 | ack -v ack`
-    echo $KAT_TMP
-    echo $KAT_TMP | cut -c1-6 | xargs kill
-}
 
 function parse_git_branch {
     git rev-parse --git-dir > /dev/null 2>&1
@@ -71,12 +60,6 @@ function parse_git_branch {
 }
 
 
-# apt-get aliases
-alias ag="sudo apt-get "
-alias agi="sudo apt-get install -y "
-alias agr="sudo apt-get remove "
-alias as="apt-cache search "
-
 # clipboard handling
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
@@ -86,8 +69,5 @@ export PS1="\[$(tput bold)\]\[$(tput setaf 5)\][\[$(tput setaf 2)\]\u\[$(tput se
 
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
-
-# export GOPATH=/usr/lib/go
-export PATH=$PATH:/usr/lib/go/bin
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

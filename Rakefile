@@ -1,5 +1,3 @@
-# taks :default => :install:all
-
 $current_dir = Dir.pwd
 
 def home_dir(path)
@@ -8,18 +6,16 @@ end
 
 namespace :install do
   task :vim do
-    puts 'Installing Vim configuration files'
+    puts 'Installing Vim'
+    sh "sudo apt-get install vim vim-gtk -y"
     sh "ln -s #{$current_dir}/vim/ ~/.vim"
     sh "ln -s ~/.vim/vimrc ~/.vimrc"
     sh "ln -s ~/.vim/gvimrc ~/.gvimrc"
-
-    # code linters
-    sh "sudo npm install -g jshint jsonlint csslint coffee-script"
-    sh "sudo pip install flake8"
   end
 
   task :zsh do
-    puts 'Installing Zsh configuration files'
+    puts 'Installing Zsh'
+    sh "shudo apt-get install zsh -y"
     if File.exist? home_dir '.zshrc'
       sh "mv ~/.zshrc ~/.zshrc.orig"
     end
@@ -31,67 +27,47 @@ namespace :install do
   task :bash do
     puts 'Installing Bashrc'
     if File.exist? home_dir '.bashrc'
-      sh "mv ~/.bashrc ~/.bashrc.orig"
+      sh "cp ~/.bashrc ~/.bashrc.orig"
     end
-    sh "ln -s #{$current_dir}/bash/bashrc ~/.bashrc"
+    sh "cat #{$current_dir}/bash/bashrc >> ~/.bashrc"
+  end
+
+  task :fonts do
+    puts 'Installing Fonts'
+    sh "mkdir -p ~/.fonts"
+    sh "cp #{$current_dir}/fonts/*.ttf ~/.fonts/"
+    sh "sudo fc-cache -f -v"
   end
 
   task :git do
     sh "ln -s #{$current_dir}/gitconfig/gitconfig ~/.gitconfig"
+    sh "ln -s #{$current_dir}/gitconfig/gitignore ~/.gitignore"
   end
 
   task :terminator do
-    if not File.exist? home_dir ".config/terminator"
-      sh 'mkdir ~/.config/terminator'
-    end
+    sh "sudo apt-get install terminator -y"
+    sh 'mkdir -p ~/.config/terminator'
     sh "ln -s #{$current_dir}/terminator/config ~/.config/terminator/config"
-  end
-
-  task :virtualenv do
-    sh "sudo pip install virtualenvwrapper"
-    if File.exist? home_dir ".virtualenvs"
-      sh "rm ~/.virtualenvs/postactivate ~/.virtualenvs/postdeactivate"
-    else
-      sh "mkdir ~/.virtualenvs"
-    end
-    sh "ln -s #{$current_dir}/virtualenvwrapper/postactivate ~/.virtualenvs/postactivate"
-    sh "ln -s #{$current_dir}/virtualenvwrapper/postdeactivate ~/.virtualenvs/postdeactivate"
-  end
-
-  task :pyenv do
-    sh "sh #{$current_dir}/pyenv/install_pyenv.sh"
   end
 
   task :rvm do
     sh "curl -#L https://get.rvm.io | bash -s stable --autolibs=3 --ruby"
   end
 
-  task :nvm do
-    sh "curl https://raw.github.com/creationix/nvm/master/install.sh | sh"
-  end
-
-  task :gnome_shell do
-    # sh "sudo apt-add-repository ppa:gnome3-team/gnome3"
-    # sh "sudo apt-get update"
-    sh "sudo apt-get install gnome-shell -y"
-    sh "sudo apt-get install gnome-tweak-tool gnome-sushi -y"
-  end
-
-  task :themes do
-    sh "sudo cp -r #{$current_dir}/themes/* /usr/share/themes/"
-    sh "cp -r #{$current_dir}/gnome-shell/* ~/.local/share/gnome-shell/extensions/"
-  end
-
-  task :ubuntu do
-    # sh "sudo apt-add-repository ppa:mozillateam/firefox-next"
+  task :firefox do
+    sh "sudo apt-add-repository ppa:mozillateam/firefox-next"
     sh "sudo apt-get update"
     sh "sudo apt-get upgrade"
+  end
+
+  task :apt do
+    sh "sudo apt-get update"
 
     # install packages
     packages = [
-      'tree', 'git', 'vim', 'vim-gtk', 'terminator', 'ack-grep', 'npm',
-      'python-dev', 'python-pip', 'zsh', 'curl', 'build-essential',
-      'meld', 'chromium-browser', 'vlc', 'gnome-do', 'xclip',
+      'git', 'vim', 'vim-gtk', 'ack-grep', 'npm',
+      'python-dev', 'python-pip', 'curl', 'build-essential',
+      'meld', 'chromium-browser', 'vlc', 'xclip',
     ].join(' ')
     sh "sudo apt-get install #{packages} -y"
 
@@ -102,6 +78,26 @@ namespace :install do
 
   end
 
-  task :all => [:ubuntu, :bash, :zsh, :git, :rvm, :virtualenv, :vim,
-                :terminator,]
+  task :st2 do
+    puts "Install sublime-text2"
+
+    sh "sudo apt-add-repository ppa:webupd8team/sublime-text-2"
+    sh "sudo apt-get update"
+    sh "sudo apt-get install sublime-text"
+    sh "mkdir -p ~/.config/sublime-text-2/Packages/User/"
+    sh "cp #{current_dir}/st2/Packages/User/Preferences.sublime-settings ~/.config/sublime-text-2/Packages/User/"
+    sh "cp #{current_dir}/st2/Installed\ Packages/Package\ Control.sublime-settings ~/.config/sublime-text-2/Installed\ Packages/"
+  end
+
+  task :fish do
+    puts "Install fish shell settings"
+    sh "sudo apt-get install fish"
+    sh "mkdir -p ~/.config/fish/"
+    sh "ln -s #{current_dir}/fish/config.fish ~/.config/fish/config.fish"
+    sh "ln -s #{current_dir}/fish/functions ~/.config/fish/functions"
+
+    sh "git clone https://github.com/adambrenecki/virtualfish.git #{current_dir}/../virtualfish"
+  end
+
+  task :all => [:apt, :vim, :bash, :fonts, :git, :terminator, :firefox, :st2, :fish, :rvm ]
 end
