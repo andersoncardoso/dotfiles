@@ -1,0 +1,8 @@
+.*.swp
+.*.swo
+.*.swn
+Guardfile
+.ruby-version
+.ruby-gemset
+.venv
+
