@@ -17,10 +17,6 @@ function fish_right_prompt
   set_color blue
   echo (prompt_pwd)
 
-  if set -q VIRTUAL_ENV
-      echo -n -s (set_color $fish_title_color) " venv(" (set_color purple) (basename "$VIRTUAL_ENV") (set_color $fish_title_color) ")"
-  end
-
   if test -d .git
     set_color $fish_title_color
     echo " git:("(parse_git_branch)")"

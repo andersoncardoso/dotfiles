@@ -1,4 +1,6 @@
-$current_dir = Dir.pwd
+def current_dir
+  Dir.pwd
+end
 
 def home_dir(path)
   File.join(Dir.home, path)
@@ -8,7 +10,7 @@ namespace :install do
   task :vim do
     puts 'Installing Vim'
     sh "sudo apt-get install vim vim-gtk -y"
-    sh "ln -s #{$current_dir}/vim/ ~/.vim"
+    sh "ln -s #{current_dir}/vim/ ~/.vim"
     sh "ln -s ~/.vim/vimrc ~/.vimrc"
     sh "ln -s ~/.vim/gvimrc ~/.gvimrc"
   end
@@ -19,7 +21,7 @@ namespace :install do
     if File.exist? home_dir '.zshrc'
       sh "mv ~/.zshrc ~/.zshrc.orig"
     end
-    sh "ln -s #{$current_dir}/zsh/ ~/.zsh"
+    sh "ln -s #{current_dir}/zsh/ ~/.zsh"
     sh "ln -s ~/.zsh/zshrc ~/.zshrc"
     sh "chsh -s /bin/zsh"
   end
@@ -29,25 +31,25 @@ namespace :install do
     if File.exist? home_dir '.bashrc'
       sh "cp ~/.bashrc ~/.bashrc.orig"
     end
-    sh "cat #{$current_dir}/bash/bashrc >> ~/.bashrc"
+    sh "cat #{current_dir}/bash/bashrc >> ~/.bashrc"
   end
 
   task :fonts do
     puts 'Installing Fonts'
     sh "mkdir -p ~/.fonts"
-    sh "cp #{$current_dir}/fonts/*.ttf ~/.fonts/"
+    sh "cp #{current_dir}/fonts/*.ttf ~/.fonts/"
     sh "sudo fc-cache -f -v"
   end
 
   task :git do
-    sh "ln -s #{$current_dir}/gitconfig/gitconfig ~/.gitconfig"
-    sh "ln -s #{$current_dir}/gitconfig/gitignore ~/.gitignore"
+    sh "ln -s #{current_dir}/gitconfig/gitconfig ~/.gitconfig"
+    sh "ln -s #{current_dir}/gitconfig/gitignore ~/.gitignore"
   end
 
   task :terminator do
     sh "sudo apt-get install terminator -y"
     sh 'mkdir -p ~/.config/terminator'
-    sh "ln -s #{$current_dir}/terminator/config ~/.config/terminator/config"
+    sh "ln -s #{current_dir}/terminator/config ~/.config/terminator/config"
   end
 
   task :rvm do
