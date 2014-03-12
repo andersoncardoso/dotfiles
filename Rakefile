@@ -80,26 +80,5 @@ namespace :install do
 
   end
 
-  task :st2 do
-    puts "Install sublime-text2"
-
-    sh "sudo apt-add-repository ppa:webupd8team/sublime-text-2"
-    sh "sudo apt-get update"
-    sh "sudo apt-get install sublime-text"
-    sh "mkdir -p ~/.config/sublime-text-2/Packages/User/"
-    sh "cp #{current_dir}/st2/Packages/User/Preferences.sublime-settings ~/.config/sublime-text-2/Packages/User/"
-    sh "cp #{current_dir}/st2/Installed\ Packages/Package\ Control.sublime-settings ~/.config/sublime-text-2/Installed\ Packages/"
-  end
-
-  task :fish do
-    puts "Install fish shell settings"
-    sh "sudo apt-get install fish"
-    sh "mkdir -p ~/.config/fish/"
-    sh "ln -s #{current_dir}/fish/config.fish ~/.config/fish/config.fish"
-    sh "ln -s #{current_dir}/fish/functions ~/.config/fish/functions"
-
-    sh "git clone https://github.com/adambrenecki/virtualfish.git #{current_dir}/../virtualfish"
-  end
-
-  task :all => [:apt, :vim, :bash, :fonts, :git, :terminator, :firefox, :st2, :fish, :rvm ]
+  task :all => [:apt, :vim, :bash, :fonts, :git, :terminator, :firefox, :rvm ]
 end

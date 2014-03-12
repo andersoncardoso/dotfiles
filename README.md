@@ -5,12 +5,9 @@ Some dotfiles I use:
 - zsh - configuration for the zshell
 - gitconfig - my gitconfig file
 - terminator - terminator solarized theme
-- virtualenvwrapper - hooks for better prompts on zsh
 
 
 ##To install:
-
-### Automatic:
 
 To install any configuration automatically just use the rake tasks:
 
@@ -23,46 +20,6 @@ and so forth for every configuration
 to install everything: ```rake install:all```
 
 OBS: of course you will need ruby and rake for this.
-
-### Manually:
-
-#### vim
-
-```
-    cd ~
-    cp -r /path/to/dotfiles/vim/ .vim
-    ln -s ~/.vim/vimrc ~/.vimrc
-    ln -s ~/.vim/gvimrc ~/.gvimrc
-```
-  done, pathogen takes care of the plugins
-
-
-#### bash
-
-#### zsh
-
-- install zsh
-
-   ```sudo apt-get install zsh   # or equivalent for another OS```
-
-- set zsh as your terminal
-
-   ```chsh -s /bin/zsh```
-
-- set our changes:
-
-```
-   mv ~/.zshrc ~/.zshrc.orig
-   cp -r /path-to-dotifiles/zsh ~/.zsh
-   ln -s /path-to-dotfiles/zsh/zshrc ~/.zshrc
-   (fix PATH if needed)
-```
-
-#### gitconfig
-
-#### terminator
-
-#### virtualenvwrapper
 
 
 ##Vim Usage:
