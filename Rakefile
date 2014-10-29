@@ -9,7 +9,7 @@ end
 namespace :install do
   task :vim do
     puts 'Installing Vim'
-    sh "sudo apt-get install vim vim-gtk -y"
+    # sh "sudo apt-get install vim vim-gtk -y"
     sh "ln -s #{current_dir}/vim/ ~/.vim"
     sh "ln -s ~/.vim/vimrc ~/.vimrc"
     sh "ln -s ~/.vim/gvimrc ~/.gvimrc"
