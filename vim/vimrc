@@ -141,6 +141,8 @@ imap <leader>c <ESC>:TComment<CR>i
 nnoremap <C-o> o<ESC>
 nmap <space> i <ESC>
 
+" auto activate rvm
+autocmd BufEnter * Rvm
 
 " syntastic settings
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
