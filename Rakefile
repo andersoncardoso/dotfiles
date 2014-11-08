@@ -6,18 +6,21 @@ def home_dir(path)
   File.join(Dir.home, path)
 end
 
+def osx?
+  require 'rbconfig'
+  !!RbConfig::CONFIG['target_os'].match(/darwin/i)
+end
+
 namespace :install do
   task :vim do
-    puts 'Installing Vim'
-    # sh "sudo apt-get install vim vim-gtk -y"
+    puts 'Configure Vim'
     sh "ln -s #{current_dir}/vim/ ~/.vim"
     sh "ln -s ~/.vim/vimrc ~/.vimrc"
     sh "ln -s ~/.vim/gvimrc ~/.gvimrc"
   end
 
   task :zsh do
-    puts 'Installing Zsh'
-    sh "shudo apt-get install zsh -y"
+    puts 'Configure Zsh'
     if File.exist? home_dir '.zshrc'
       sh "mv ~/.zshrc ~/.zshrc.orig"
     end
@@ -27,22 +30,25 @@ namespace :install do
   end
 
   task :bash do
-    puts 'Installing Bashrc'
-    if File.exist? home_dir '.bashrc'
-      sh "cp ~/.bashrc ~/.bashrc.orig"
+    puts 'Configure Bashrc'
+    profile = osx? ? '.bash_profile' : '.bashrc'
+    if File.exist? home_dir profile
+      sh "cp ~/#{profile} ~/#{profile}.orig"
     end
-    sh "cat #{current_dir}/bash/bashrc >> ~/.bashrc"
+    sh "cat #{current_dir}/bash/#{profile.gsub('.', '')} >> ~/#{profile}"
   end
 
   task :fonts do
-    puts 'Installing Fonts'
+    puts 'Install Fonts'
     sh "mkdir -p ~/.fonts"
     sh "cp #{current_dir}/fonts/*.ttf ~/.fonts/"
     sh "sudo fc-cache -f -v"
   end
 
   task :git do
-    sh "ln -s #{current_dir}/gitconfig/gitconfig ~/.gitconfig"
+    puts 'Configure git' 
+    platform = osx? ? 'osx' : 'linux'
+    sh "ln -s #{current_dir}/gitconfig/gitconfig_#{platform} ~/.gitconfig"
     sh "ln -s #{current_dir}/gitconfig/gitignore ~/.gitignore"
   end
 
@@ -70,6 +76,7 @@ namespace :install do
       'git', 'vim', 'vim-gtk', 'ack-grep', 'npm',
       'python-dev', 'python-pip', 'curl', 'build-essential',
       'meld', 'chromium-browser', 'vlc', 'xclip',
+    #   'zsh'
     ].join(' ')
     sh "sudo apt-get install #{packages} -y"
 
@@ -80,5 +87,6 @@ namespace :install do
 
   end
 
-  task :all => [:apt, :vim, :bash, :fonts, :git, :terminator, :firefox, :rvm ]
+  task :linux => [ :apt, :vim, :bash, :fonts, :git, :terminator, :firefox, :rvm ]
+  task :osx   => [ :vim, :bash, :git]
 end
