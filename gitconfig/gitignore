@@ -5,4 +5,5 @@ Guardfile
 .ruby-version
 .ruby-gemset
 .venv
+.DS_Store
 
