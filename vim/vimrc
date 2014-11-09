@@ -103,9 +103,9 @@ au FocusLost * :wa
 set autowriteall
 
 " highlights lines over 80 columns
-highlight LineOverWidth guibg=#424242 ctermbg=DarkGray
-au ColorScheme * highlight LineOverWidth guibg=#424242
-au BufWinEnter * let w:m1=matchadd('LineOverWidth', '\%>79v.\+', -1)
+" highlight LineOverWidth guibg=#424242 ctermbg=DarkGray
+" au ColorScheme * highlight LineOverWidth guibg=#424242
+" au BufWinEnter * let w:m1=matchadd('LineOverWidth', '\%>79v.\+', -1)
 
 " highlists trailing whitespaces
 highlight ExtraWhitespace ctermbg=gray guibg=#592929
@@ -161,3 +161,6 @@ let NERDTreeIgnore = ['\.pyc$']
 let g:indentLine_enabled = 0
 let g:indentLine_char = '┆'
 nmap <leader>i :IndentLinesToggle<CR>
+
+" airline
+let g:airline_theme='solarized'
