@@ -4,7 +4,8 @@
 if has("gui_gtk2")
     set guifont=monofur\ 14
 elseif has("gui_macvim")
-    set guifont=monofur:h17
+    " set guifont=monofur:h17
+    set guifont=Monaco:h13
 end
 
 set antialias                     " MacVim: smooth fonts.
@@ -21,8 +22,9 @@ set lines=35 columns=100          " Window dimensions.
 
 let g:solarized_termcolors=256
 
-" colorscheme corporation
-colorscheme twilight
+" colorscheme twilight
+set background=light
+colorscheme solarized
 
 " better autocompletion menu colors
 highlight Pmenu guibg=#646464
