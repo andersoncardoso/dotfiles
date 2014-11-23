@@ -24,7 +24,7 @@ let g:solarized_termcolors=256
 
 " colorscheme twilight
 set background=light
-colorscheme pyte
+colorscheme solarized
 
 " better autocompletion menu colors
 highlight Pmenu guibg=#646464

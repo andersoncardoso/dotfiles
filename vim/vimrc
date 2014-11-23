@@ -140,6 +140,7 @@ imap <leader>c <ESC>:TComment<CR>i
 " convenient mappings
 nnoremap <C-o> o<ESC>
 nmap <space> i <ESC>
+nmap <leader>bb :b#<CR>
 
 " auto activate rvm
 " autocmd BufEnter * Rvm
@@ -163,4 +164,5 @@ let g:indentLine_char = '┆'
 nmap <leader>i :IndentLinesToggle<CR>
 
 " airline
+set background=light
 let g:airline_theme='solarized'
