@@ -35,6 +35,10 @@ namespace :install do
     if File.exist? home_dir profile
       sh "cp ~/#{profile} ~/#{profile}.orig"
     end
+
+    sh "mkdir -p ~/bin"
+    sh "cp #{current_dir}/bash/vcprompt ~/bin/vcprompt"
+    sh "chmod 755 ~/bin/vcprompt"
     sh "cat #{current_dir}/bash/#{profile.gsub('.', '')} >> ~/#{profile}"
   end
 
