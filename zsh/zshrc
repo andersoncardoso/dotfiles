@@ -195,7 +195,7 @@ source ~/.zsh/themes/simplicity.zsh-theme
 
 # editor setting
 if is_mac; then
-    export EDITOR='mvim'
+    export EDITOR='nvim'
 else
     export EDITOR='vim'
 fi
@@ -223,18 +223,23 @@ fi
 
 # virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
-if [[ $(pyenv global) == system ]]; then
-    if is_mac; then
-        source /usr/local/share/python/virtualenvwrapper.sh
-    else
-        source /usr/local/bin/virtualenvwrapper.sh
+if [[ $(command -v pyenv) && $(pyenv global) -ne system ]]; then
+    if [[ -f ~/.pyenv/versions/$(pyenv global)/bin/virtualenvwrapper.sh ]]; then
+        source ~/.pyenv/versions/$(pyenv global)/bin/virtualenvwrapper.sh
     fi
 else
-    source ~/.pyenv/versions/$(pyenv global)/bin/virtualenvwrapper.sh
+    if [[ -f /usr/local/share/python/virtualenvwrapper.sh ]]; then
+        source /usr/local/share/python/virtualenvwrapper.sh
+    elif [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
+        source /usr/local/bin/virtualenvwrapper.sh
+    fi
 fi
 
 [[ -s ~/.nvm/nvm.sh ]] && . ~/.nvm/nvm.sh # This loads NVM
 
-export CODE_PATH=~/code
+export CODE_PATH=~/Projects
 
-PATH=$HOME/bin:$HOME/.rvm/bin:$CODE_PATH/elixir/bin:$PATH
+export PATH=$HOME/bin:$PATH
+
+alias vim='nvim '
+

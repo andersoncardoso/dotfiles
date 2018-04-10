@@ -17,40 +17,41 @@ end
 
 def setup_neovim
   puts 'Configure neovim'
-  sh 'brew install nvim'
-  sh 'mkdir -p ~/.config/nvim/{autoload,plugged}'
-  sh 'curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  sh 'brew install python'
-  sh 'brew install python@2'
-  sh 'pip3 install --user neovim jedi psutil setproctitle'
-  sh 'gem install neovim'
-  sh 'npm install -g neovim'
-  sh "ln -s #{current_dir}/neovim/init.vim ~/.config/nvim/init.vim"
+  `brew install nvim`
+  `mkdir -p ~/.config/nvim/{autoload,plugged}`
+  `curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+  `brew install python`
+  `brew install python@2`
+  `pip3 install --user neovim jedi psutil setproctitle`
+  `gem install neovim`
+  `npm install -g neovim`
+  `ln -s #{current_dir}/neovim/init.vim ~/.config/nvim/init.vim`
 end
 
 def setup_zsh
   puts 'Configure Zsh'
-  sh 'mv ~/.zshrc ~/.zshrc.orig' if File.exist?(home_dir('.zshrc'))
-  sh "ln -s #{current_dir}/zsh/ ~/.zsh"
-  sh 'ln -s ~/.zsh/zshrc ~/.zshrc'
-  sh 'chsh -s /bin/zsh'
+  `brew install zsh`
+  `mv ~/.zshrc ~/.zshrc.orig' if File.exist?(home_dir('.zshrc')`
+  `ln -s #{current_dir}/zsh/ ~/.zsh`
+  `ln -s ~/.zsh/zshrc ~/.zshrc`
+  # `chsh -s /bin/zsh`
 end
 
 def setup_bash
   puts 'Configure Bashrc'
   profile = osx? ? '.bash_profile' : '.bashrc'
-  sh "cp ~/#{profile} ~/#{profile}.orig" if File.exist?(home_dir(profile))
-  sh 'mkdir -p ~/bin'
-  sh "cp #{current_dir}/bash/vcprompt ~/bin/vcprompt"
-  sh 'chmod 755 ~/bin/vcprompt'
-  sh "cat #{current_dir}/bash/#{profile.delete('.')} >> ~/#{profile}"
+  `cp ~/#{profile} ~/#{profile}.orig" if File.exist?(home_dir(profile)`
+  `mkdir -p ~/bin`
+  `cp #{current_dir}/bash/vcprompt ~/bin/vcprompt`
+  `chmod 755 ~/bin/vcprompt`
+  `cat #{current_dir}/bash/#{profile.delete('.')} >> ~/#{profile}`
 end
 
 def setup_git
   puts 'Configure git'
   platform = osx? ? 'osx' : 'linux'
-  sh "ln -s #{current_dir}/gitconfig/gitconfig_#{platform} ~/.gitconfig"
-  sh "ln -s #{current_dir}/gitconfig/gitignore ~/.gitignore"
+  `ln -s #{current_dir}/gitconfig/gitconfig_#{platform} ~/.gitconfig`
+  `ln -s #{current_dir}/gitconfig/gitignore ~/.gitignore`
 end
 
 OptionParser.new do |opts|
