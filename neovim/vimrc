@@ -1,24 +1,6 @@
-" Neovim config.
-" Copy or symlink to ~/.config/nvim/init.vim
-
-call plug#begin('~/.config/nvim/plugged')
-Plug 'junegunn/seoul256.vim'
-Plug 'nanotech/jellybeans.vim'
-Plug 'sjl/badwolf'
-Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'vim-scripts/bufexplorer.zip'
-Plug 'itchyny/lightline.vim'
-Plug 'itchyny/vim-gitbranch'
-Plug 'w0rp/ale'
-Plug 'maximbaz/lightline-ale'
-Plug 'maralla/completor.vim'
-Plug 'tomtom/tcomment_vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'maxbrunsfeld/vim-yankstack'
-Plug 'mileszs/ack.vim'
-Plug 'vim-scripts/vim-auto-save'
-call plug#end()
+" Simpler vim confi, without plugins, to use outside Neovim
+" on irb sessions for example
+" Copy or symlink to ~/.vimrc
 
 syntax enable                     " enable syntax processing
 
@@ -155,74 +137,7 @@ endif
 nnoremap <C-o> o<ESC>
 nmap <space> i <ESC>
 
-" ignore system and auto generated stuff
-set wildignore+=*/tmp/*,*.so,*.swp,*.swo,*.zip,*.pyc  " MacOSX/Linux
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|public\/assets\/.*\|node_modules\/*'
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_working_path_mode = 0
-
-" NERDTree mapping
-nnoremap <leader>t :NERDTreeToggle<CR>
-let NERDTreeIgnore = ['\.pyc$']
-
-let g:lightline = {
-      \ 'colorscheme': 'seoul256',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [  'linter_errors', 'linter_warnings', 'linter_ok' ],
-      \              [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'fileformat', 'fileencoding', 'filetype'] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'gitbranch#name'
-      \ },
-      \ 'component_expand': {
-      \   'linter_warnings': 'lightline#ale#warnings',
-      \   'linter_errors': 'lightline#ale#errors',
-      \   'linter_ok': 'lightline#ale#ok',
-      \ },
-      \ 'component_type': {
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \     'linter_ok': 'left',
-      \ },
-      \ }
-
-let g:completor_completion_delay = 400
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0     " linters don't run when opening a file
-"let g:ale_lint_delay = 500
-"let g:ale_sign_error = 'X'
-"let g:ale_sign_warning = '>'
-let g:ale_lint_on_save = 1
-nmap <leader>l :ALELint<CR>
-
-" tcomment plugin remap
-map <leader>c :TComment<CR>
-imap <leader>c <ESC>:TComment<CR>i
-
-" yankstack mappings
-nmap <leader>p <Plug>yankstack_substitute_older_paste
-nmap <leader>P <Plug>yankstack_substitute_newer_paste
-
-let g:ackprg = 'ack --ignore-dir=coverage --ignore-dir=log --ignore-dir=public/ --ignore-dir=tmp --ignore-dir=app/assets/javascripts/generated --ignore-dir=app/assets/javascripts/vendor '
-cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack!<Space>
-
-" Autosave
-let g:auto_save = 1
-let g:auto_save_no_updatetime = 1
-let g:auto_save_in_insert_mode = 0
-let g:auto_save_silent = 1
-
-
-let g:seoul256_background = 234
-colorscheme seoul256             " badwolf, nord
+colorscheme desert
 
 " autocomplete menu colors
 highlight Pmenu guibg=#646464
