@@ -49,9 +49,13 @@ end
 
 def setup_git
   puts 'Configure git'
-  platform = osx? ? 'osx' : 'linux'
-  `ln -s #{current_dir}/gitconfig/gitconfig_#{platform} ~/.gitconfig`
+  `ln -s #{current_dir}/gitconfig/gitconfig ~/.gitconfig`
   `ln -s #{current_dir}/gitconfig/gitignore ~/.gitignore`
+end
+
+def setup_terminator
+  `mkdir -p ~/.config/terminator`
+  `ln -s #{current_dir}/terminator/config ~/.config/terminator/config`
 end
 
 OptionParser.new do |opts|
@@ -60,9 +64,9 @@ OptionParser.new do |opts|
   opts.on('--git', 'Gitconfig') { setup_git }
   opts.on('--zsh', 'Zsh config') { setup_zsh }
   opts.on('--bash', 'Bash config') { setup_bash }
+  opts.on('--term', 'Terminator config') { setup_terminator }
   opts.on('--all', 'All configs') do
     setup_bash
-    setup_zsh
     setup_git
     setup_neovim
   end

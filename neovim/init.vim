@@ -45,7 +45,7 @@ set nofoldenable                  " disable folding
 set incsearch                     " Highlight matches as you type.
 set hlsearch                      " Highlight matches.
 
-set wrap                          " Turn on line wrapping.
+set wrap linebreak nolist         " Turn on line wrapping
 set scrolloff=3                   " Show 3 lines of context around the cursor.
 
 set title                         " Set the terminal's title
@@ -103,12 +103,12 @@ set autowriteall
 "let mapleader=","                " leader is comma
 
 " move to beginning/end of line
-nnoremap B ^
-nnoremap E $
+" nnoremap B ^
+" nnoremap E $
 
 " $/^ doesn't do anything
-nnoremap $ <nop>
-nnoremap ^ <nop>
+" nnoremap $ <nop>
+" nnoremap ^ <nop>
 
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
@@ -194,12 +194,12 @@ let g:completor_completion_delay = 400
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0     " linters don't run when opening a file
-"let g:ale_lint_delay = 500
-"let g:ale_sign_error = 'X'
-"let g:ale_sign_warning = '>'
-let g:ale_lint_on_save = 1
+let g:ale_lint_delay = 500
+" let g:ale_sign_error = 'X'
+" let g:ale_sign_warning = '>'
+" let g:ale_lint_on_save = 1
 nmap <leader>l :ALELint<CR>
 
 " tcomment plugin remap

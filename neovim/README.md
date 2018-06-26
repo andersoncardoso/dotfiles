@@ -27,9 +27,9 @@
 - [n] <S>>> | <<       => indent | unindent
 
 - [n] <C-S>t           => new tab
-- [n] <C-S>arrows      => move to left/right tab
+- [n] <S>arrows      => move to left/right tab
 
-- [n] <S>arrows        => move to pane (corresponding to the arrow direction)
+- [n] <C-S>arrows        => move to pane (corresponding to the arrow direction)
 - [n] \w<arrows>       => move panel to other position
 - [n] \ws | \wv        => open split pane (s=horiz, v=vert)
 
