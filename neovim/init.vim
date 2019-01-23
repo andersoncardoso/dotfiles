@@ -4,7 +4,7 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/seoul256.vim'
 Plug 'nanotech/jellybeans.vim'
-Plug 'sjl/badwolf'
+Plug 'morhetz/gruvbox'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/bufexplorer.zip'
@@ -12,12 +12,14 @@ Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'w0rp/ale'
 Plug 'maximbaz/lightline-ale'
-Plug 'maralla/completor.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/vim-auto-save'
+Plug 'zah/nim.vim'  " Nim syntax
+Plug 'rhysd/vim-crystal'  " Crystal syntax
+Plug 'Quramy/tsuquyomi'  " Typescript syntax and completion
 call plug#end()
 
 syntax enable                     " enable syntax processing
@@ -141,6 +143,12 @@ nmap <silent> <S-Down> :wincmd j<CR>
 nmap <silent> <S-Left> :wincmd h<CR>
 nmap <silent> <S-Right> :wincmd l<CR>
 
+" resize current buffer by +/- 5
+nnoremap <leader>w<left> :vertical resize -5<cr>
+nnoremap <leader>w<down> :resize +5<cr>
+nnoremap <leader>w<up> :resize -5<cr>
+nnoremap <leader>w<right> :vertical resize +5<cr>
+
 " paste and copy from clipboard
 if has("unix")
   let s:uname = system("uname")
@@ -190,10 +198,6 @@ let g:lightline = {
       \ },
       \ }
 
-let g:completor_completion_delay = 400
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 " let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0     " linters don't run when opening a file
 let g:ale_lint_delay = 500
@@ -205,6 +209,9 @@ nmap <leader>l :ALELint<CR>
 " tcomment plugin remap
 map <leader>c :TComment<CR>
 imap <leader>c <ESC>:TComment<CR>i
+
+" BufExplorer
+nmap <Leader>[ :BufExplorer<CR>
 
 " yankstack mappings
 nmap <leader>p <Plug>yankstack_substitute_older_paste
@@ -220,9 +227,18 @@ let g:auto_save_no_updatetime = 1
 let g:auto_save_in_insert_mode = 0
 let g:auto_save_silent = 1
 
+" completion
+imap <C-space> <C-n>
 
-let g:seoul256_background = 234
-colorscheme seoul256             " badwolf, nord
+set background=dark
+
+" let g:seoul256_background = 234
+" colorscheme seoul256             " badwolf, nord
+
+" colorscheme jellybeans
+
+" let g:gruvbox_contrast_dark = 'medium'
+colorscheme gruvbox
 
 " autocomplete menu colors
 highlight Pmenu guibg=#646464

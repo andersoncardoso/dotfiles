@@ -17,14 +17,17 @@ end
 
 def setup_neovim
   puts 'Configure neovim'
-  `brew install nvim`
+  # `brew install nvim`
   `mkdir -p ~/.config/nvim/{autoload,plugged}`
   `curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
-  `brew install python`
-  `brew install python@2`
-  `pip3 install --user neovim jedi psutil setproctitle`
-  `gem install neovim`
-  `npm install -g neovim`
+  # `brew install python`
+  # `brew install python@2`
+  # `pip3 install --user neovim jedi psutil setproctitle`
+  # `gem install neovim`
+  # `npm install -g neovim`
+  #
+  # `gem install rubocop`
+  # `npm install -g eslint sass-lint`
   `ln -s #{current_dir}/neovim/init.vim ~/.config/nvim/init.vim`
 end
 
