@@ -5,6 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/seoul256.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'morhetz/gruvbox'
+Plug 'mhartington/oceanic-next'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/bufexplorer.zip'
@@ -12,6 +13,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'w0rp/ale'
 Plug 'maximbaz/lightline-ale'
+Plug 'Yggdroot/indentLine'
 Plug 'tomtom/tcomment_vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'maxbrunsfeld/vim-yankstack'
@@ -20,6 +22,7 @@ Plug 'vim-scripts/vim-auto-save'
 Plug 'zah/nim.vim'  " Nim syntax
 Plug 'rhysd/vim-crystal'  " Crystal syntax
 Plug 'Quramy/tsuquyomi'  " Typescript syntax and completion
+Plug 'mxw/vim-jsx'
 call plug#end()
 
 syntax enable                     " enable syntax processing
@@ -69,6 +72,9 @@ set smarttab
 set autoread                      " auto reload file when it changes
 
 set laststatus=2
+
+" enable mouse support
+set mouse=a
 
 " specific tab size
 augroup configgroup
@@ -229,6 +235,9 @@ let g:auto_save_silent = 1
 
 " completion
 imap <C-space> <C-n>
+
+" indentLine toggle
+" let g:indentLine_enabled = 0
 
 set background=dark
 
