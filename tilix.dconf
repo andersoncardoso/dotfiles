@@ -1,0 +1,93 @@
+[keybindings]
+win-view-sidebar='<Primary>Home'
+
+[/]
+terminal-title-show-when-single=false
+terminal-title-style='none'
+window-style='disable-csd-hide-toolbar'
+
+[profiles]
+list=['2b7c4080-0ddd-46c5-8f23-563fd3ba789d', '74bad077-a64d-4aa5-a6ac-16f48a44ca69', '7a437294-1dfa-45a5-9e24-f01f2995ab0d']
+default='74bad077-a64d-4aa5-a6ac-16f48a44ca69'
+
+[profiles/74bad077-a64d-4aa5-a6ac-16f48a44ca69]
+foreground-color='#EBDBB2'
+visible-name='xps13'
+login-shell=true
+palette=['#282828', '#CC241D', '#98971A', '#D79921', '#458588', '#B16286', '#689D6A', '#BDAE93', '#7C6F64', '#FB4934', '#B8BB26', '#FABD2F', '#83A598', '#D3869B', '#8EC07C', '#EBDBB2']
+bold-is-bright=true
+badge-color='#AC7EA8'
+badge-color-set=false
+show-scrollbar=false
+scroll-on-output=false
+cursor-colors-set=false
+highlight-colors-set=false
+cell-height-scale=1.1000000000000001
+bold-color-set=false
+font='Fira Code 11'
+terminal-bell='none'
+scrollback-unlimited=true
+use-system-font=false
+terminal-title='${id}: ${title}'
+use-theme-colors=false
+text-blink-mode='focused'
+background-color='#282828'
+background-transparency-percent=3
+dim-transparency-percent=3
+
+[profiles/7a437294-1dfa-45a5-9e24-f01f2995ab0d]
+cursor-shape='block'
+cursor-colors-set=false
+bold-color-set=false
+terminal-bell='none'
+scroll-on-keystroke=true
+cjk-utf8-ambiguous-width='narrow'
+default-size-rows=24
+encoding='UTF-8'
+triggers=@as []
+automatic-switch=@as []
+custom-command=''
+visible-name='xps13 - light'
+text-blink-mode='focused'
+terminal-title='${id}: ${title}'
+use-theme-colors=false
+cell-height-scale=1.0
+badge-text=''
+exit-action='close'
+use-system-font=false
+backspace-binding='ascii-delete'
+rewrap-on-resize=true
+foreground-color='#282828'
+login-shell=true
+background-transparency-percent=3
+cursor-blink-mode='system'
+dim-transparency-percent=3
+bold-is-bright=true
+cell-width-scale=1.0
+default-size-columns=80
+draw-margin=80
+cursor-foreground-color='#ffffff'
+allow-bold=true
+palette=['#FBF1C7', '#CC241D', '#98971A', '#D79921', '#458588', '#B16286', '#689D6A', '#665C54', '#A89984', '#9D0006', '#79740E', '#B57614', '#076678', '#8F3F71', '#427B58', '#3C3836']
+notify-silence-threshold=0
+background-color='#FBF1C7'
+badge-color='#AC7EA8'
+highlight-foreground-color='#ffffff'
+font='Fantasque Sans Mono 13'
+delete-binding='delete-sequence'
+badge-position='northeast'
+custom-hyperlinks=@as []
+scrollback-unlimited=true
+cursor-background-color='#000000'
+highlight-background-color='#000000'
+scroll-on-output=false
+select-by-word-chars='-,./?%&#:_'
+use-custom-command=false
+badge-color-set=false
+bold-color='#ffffff'
+highlight-colors-set=false
+scrollback-lines=8192
+show-scrollbar=false
+
+[profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
+visible-name='Default'

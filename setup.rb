@@ -61,6 +61,10 @@ def setup_terminator
   `ln -s #{current_dir}/terminator/config ~/.config/terminator/config`
 end
 
+def setup_tilix
+  `dconf load /com/gexperts/Terminix/ < tilix.dconf`
+end
+
 OptionParser.new do |opts|
   opts.banner = 'Usage: setup [options]'
   opts.on('--neovim', 'Neovim config') { setup_neovim }
@@ -68,6 +72,7 @@ OptionParser.new do |opts|
   opts.on('--zsh', 'Zsh config') { setup_zsh }
   opts.on('--bash', 'Bash config') { setup_bash }
   opts.on('--term', 'Terminator config') { setup_terminator }
+  opts.on('--tilix', 'Tilix config') { setup_tilix }
   opts.on('--all', 'All configs') do
     setup_bash
     setup_git
