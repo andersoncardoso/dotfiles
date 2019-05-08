@@ -19,8 +19,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/vim-auto-save'
-Plug 'zah/nim.vim'  " Nim syntax
-Plug 'rhysd/vim-crystal'  " Crystal syntax
+Plug 'zah/nim.vim'
+Plug 'rhysd/vim-crystal'
 Plug 'Quramy/tsuquyomi'  " Typescript syntax and completion
 Plug 'mxw/vim-jsx'
 call plug#end()
@@ -241,13 +241,13 @@ imap <C-space> <C-n>
 
 set background=dark
 
-" let g:seoul256_background = 234
-" colorscheme seoul256             " badwolf, nord
+let g:seoul256_background = 234
+colorscheme seoul256             " badwolf, nord
 
 " colorscheme jellybeans
 
 " let g:gruvbox_contrast_dark = 'medium'
-colorscheme gruvbox
+" colorscheme gruvbox
 
 " autocomplete menu colors
 highlight Pmenu guibg=#646464
